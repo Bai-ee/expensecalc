@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "expenses-administration",
+  "private_key_id": "fb7c867085c4782c5c738d1066424a9b7ea98a96",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCK8FUhZQC785JV\n3BzGPgYWxxG2dASePv0YCwdcdRvJV7cg9zqSd0boyErP+Mj8Xhko43Su0WziHKH4\niPVnOVQ5IM/wR90oJahyNMLTZQron4p4AfV6+Q5onRIajrrx2PXWy9ijV0FzXu4z\n+ar0tI1tkSffpkt8eToQDtWqSrjBeApmuHdGDVebW+bkQGlHm8qWDQ0tDc7d3FeY\nD16bFJbbEuSIuo0/Q1/jMGMN5a1ZAF777YOE9eGFqOnEJBWxk7hofs22J3BU7IrA\n7iGu31T2Ekwoj+6vEVuAAHFDnNihp2sPoQ8/mMGPjK1qfI8W5iZ0oyTRj/aAmnsL\ngXxkh+6HAgMBAAECggEAKIiP1XPBgJPBM+JI1L8AiMGf1cJIHKCUtuB0z9Dsf9Ni\nvi/SOyuoGL5iMQVMIXAUV/zvrBa19MtUp4zRR0GO5DHB6EAW8aD24QaqdgCq642r\n2HH921fwj62PPAc629andfg3ZgPNOOrPhINIkCZigj4QS2uY5yH4wfmJ9Snid7Ju\n/J9xxcxadIB7qYHyFOn6PQSc+07jmAWEbRLgySiG+DjEqQZYcZ9a+4VOa9uVkNuy\nTtYcuE0lrkKsi/Oc8C7KY3HVmQ+RZs6LKB6hQ6UCIsjrUQd9Lj3sFtkX/fJycv+E\nTgzDWWx1kC+OUmTGNkXGBfGy4CFHHxZhxIvdMRwINQKBgQDDp7MQci1Rg0VSd7oj\nZqzbp8OqKFVNlqHbD1BhXCVVKVqs2+xiGNYzJOcJiTG0eXa3IQuEtr5Ev4yaO/E8\nR4Qa/3d0k/Ed1jEvzNRJCXLH2yURN8qsECON+yA5Vfpy+w9/iwviLYqKI843LuEq\npnwXrkg0wZ/EIDh4TFoG3UC3DQKBgQC1yn8uKP85fdQ0usBErOvPwORDR53CxicI\nQj8U3Ufu8aaxNspcE16GeXlim41Ux4AGxA4IVVNSeGFE31Cpk5Jt100pCkGXCZTX\nSTURkV6hC3zl3U/CFCwlfa7p9EGbIQium7m7DMvI6K+uBU+4Z2PVl5ih1HJhFmSA\ny8/m83SW4wKBgFXqC91K5c+HXydpX5kv+vOxZWAQufSKEqTIwrkd517P+/svz0r8\nMQLgT3uGfQcM1y5vGkm6nS4/FpSbgcDAfqgESgYs+JHrfknJHea8eWR9PHelEiAg\nLhyoi2vh70oSKKoO+rbk3JLwShs9QK6j0JXtd9OCuo86vtFEZbvh6Ar5AoGAK4Tr\nh1hnKRM3XtwqNQaUeSq7OmQFn2Aibfa19T+3/bq55giwzvQQF+8yoOmOHvKXcocy\nuMn8ZWzOFFfFjqL2VfdJ0H5VD1xK1nL/ElKTrcf7QWgGtPZxTxRUcEt5/TIeSvaa\nsu2wR0t06xr4Z7PQkYx2DJ+4NgfPTYn9HlO/4HMCgYAhasHUWVIi7bfqyVMZYI8L\n5OqvOQgkKDoheSR3hYTBjOofgunJLkbhRuHO+TILJvavwUHG9aTetLGtvcOMSnZR\n1+YZY+r1VzDufVkwb8APti7s1Yk8KLxqXzTYs2/b0ISb5VRPAmVuCXGtONXUb9YP\nUGAFoivkgplRk+1oL1ntRQ==\n-----END PRIVATE KEY-----\n",
+  "client_email": "expenses-bryan@expenses-administration.iam.gserviceaccount.com",
+  "client_id": "101953712603892558496",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/expenses-bryan%40expenses-administration.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

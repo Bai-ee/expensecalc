@@ -1,0 +1,2402 @@
+
+<!-- saved from url=(0071)chrome-extension://jkabohooekelnngbdkhpmpobbfljleoh/src/html/notes.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252"><style type="text/css">.__editor {
+  background: #ffffff;
+  border: solid 1px #e0e0e0;
+  color: #000000;
+   font-family: 'GELLIX-REGULAR', sans-serif;;'Promixa Nova', sans-serif;
+  margin-top: 10px;
+  overflow: scroll;
+  padding: 10px;
+}
+
+.__editor:focus {
+  outline: none;
+}
+
+.__toolbar {
+  display: none;
+  flex-wrap: wrap;
+  padding: 5px;
+}
+
+.__toolbar-item {
+  background: #ffffff;
+  border: 0;
+  border-radius: 3px;
+  cursor: pointer;
+  margin-right: 7px;
+  min-width: 30px;
+  padding: 5px;
+}
+
+.__toolbar-item:hover,
+.__toolbar-item.active {
+  background: #f0f0f0;
+}
+
+.__toolbar-separator {
+  border-left: solid 1px #e0e0e0;
+  margin-right: 7px;
+}
+
+.__toolbar-separator:last-child {
+  display: none;
+}
+</style></head><body><div>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="./all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <link rel="stylesheet" href="chrome-extension://jkabohooekelnngbdkhpmpobbfljleoh/src/fonts/GELLIX-REGULAR.TTF">
+  <link rel="stylesheet" href="./css2">
+  <link rel="stylesheet" href="./css2(1)">
+  <link rel="stylesheet" href="./css2(2)">
+  <link rel="stylesheet" type="text/css" media="screen" href="chrome-extension://jkabohooekelnngbdkhpmpobbfljleoh/src/css/myStyles.css">
+  <link rel="stylesheet" type="text/css" media="screen" href="chrome-extension://jkabohooekelnngbdkhpmpobbfljleoh/src/css/notes.css">
+  <link rel="stylesheet" href="chrome-extension://jkabohooekelnngbdkhpmpobbfljleoh/src/scripts/quill/quill.snow.css">
+  <script type="text/javascript" src="chrome-extension://jkabohooekelnngbdkhpmpobbfljleoh/src/scripts/quill/quill.js"></script>
+  <script src="chrome-extension://jkabohooekelnngbdkhpmpobbfljleoh/src/scripts/image-resize.min.js"></script>
+</div>
+
+<div class="main_container" id="main_container">
+  <div class="box" id="default" style="z-index: 0">
+    <div class="section_vert" style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px); opacity: 0;">
+      <!-- Div to contain dates section -->
+      <div id="close_button_container">
+        <span class="cursor-pointer material-symbols-outlined" style="font-size: 12px !important;" id="hide_extension_x" right="0px">
+          close
+        </span>
+      </div>
+      <div id="date_header" class="display-flex flex-row justify-start align-center w-100 display-none" style="display: flex;">
+        <div class="date_change_container">
+          <div id="dateIncrementL">
+            <span class="material-symbols-outlined cursor-pointer select-none adjust_arrows" id="arrow_back_ios" style="font-size: 18px; color: var(--muted) !important; opacity: 0;">
+              arrow_back_ios
+            </span>
+          </div>
+          <div id="dateIncrementR">
+            <span class="material-symbols-outlined cursor-pointer select-none" id="arrow_forward_ios" style="font-size: 18px; opacity: 1;">
+              arrow_forward_ios
+            </span>
+          </div>
+
+          <h2 id="current_date_number" class="date_number">19th</h2>
+        </div>
+
+        <div class="display-flex flex-col justify-start align-start" style=" margin-left: 0px; margin-right: 0px; margin-top:5px;overflow:visible;">            
+            <div style="display: flex; align-items: center; column-gap: 10px;">
+              <h5 id="current_duration" class="duration_text day">today</h5>
+              <div class="date-reset-container">
+                <span class="material-symbols-outlined cursor-pointer" style="display: none; font-size: 20px !important;" id="reset-date">
+                  history
+                </span>
+              </div>
+            </div>
+
+          <p id="current_day_month_year" class="text_date_day" style="text-align:left; font-size:8px; color:var(--primary);
+          width:155px">Sun May 2024</p>
+        </div>
+
+        
+      </div>
+
+      <!-- Top Navigation Section -->
+      <div class="display-flex flex-row justify-around align-center w-100 mt-2">
+
+        <!-- //welcome screen -->
+        <div id="welcomeScreen" style="width: 100%; height: 50px; border-radius: 10px; display: none; padding-top: 0px;">
+            <div class="display-flex flex-col align-center" style="width: 100%; margin-left: 0px; margin-right: 0px">
+              <!-- <h5 id="current_duration" style="color:white;   padding-top: 11px;"
+              class="duration_text day">WELCOME TO PORTD</h5> -->
+              <img style="
+              margin-top: 2px;
+              width: 90px;" src="chrome-extension://jkabohooekelnngbdkhpmpobbfljleoh/src/assets/portd_text_logo_b.png">
+          </div>
+      </div>
+        
+        <!-- //home nav -->
+        <button id="video_call" class="meeting_hover nav_button nav_button_active" style="display: flex; pointer-events: all; opacity: 1;">
+          <div id="meetings-count" class="meetings-count" style="display: block; background-color: rgb(52, 56, 124); color: rgb(255, 255, 255); visibility: visible;">0</div>
+
+          <span id="calendar_add_on" class="material-symbols-outlined no_hover_color active" style="display: block;">
+            calendar_add_on
+          </span>
+
+          <span id="calendar_add_off" style="display:none" class="material-symbols-outlined
+          no_hover_color">
+            home
+          </span>
+
+          
+
+          <p class="mt-1" id="meeting-btn-text">meetings</p>
+        </button>
+
+        <!-- //create note nav -->
+        <button id="add_notes" class="nav_button" style="display: flex; pointer-events: all; opacity: 1;">
+
+
+          <span class="material-symbols-outlined
+          no_hover_color" style="pointer-events: all;">
+            add_notes
+          </span>
+          
+          <p class="mt-1">notes</p>
+        </button>
+
+        <!-- // settings nav -->
+        <button id="settings" class="nav_button" style="display: flex; pointer-events: all; opacity: 1;">
+          <span class="material-symbols-outlined
+          no_hover_color">
+            tune
+            </span>
+          <p class="mt-1">settings</p>
+        </button>
+
+      </div>
+      
+    </div>
+
+    <!-- Div to show meetings list -->
+    <div class="collapsible collapsibleMeetings flex-1" style="flex: 2 1 0%; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px; translate: none; rotate: none; scale: none; transform: translate(0px, 0px); opacity: 0;">
+      <div style="display: flex; pointer-events: all;" class="collapsible-header collapsibleMeetingsHeader" id="meetings-collapsible-header">
+        <p class="collapsible-title" id="meetings-collapsible-title" style=" font-weight: bold;">meetings</p>
+        
+        <!-- <span class="material-symbols-outlined close-icon">
+          expand_circle_down
+        </span> -->
+        <!-- <span 
+        id="collapsible-header-close-icon" class="material-symbols-rounded expand_all meetings_nav_icon">
+          expand_all
+          </span> -->
+        <img src="chrome-extension://jkabohooekelnngbdkhpmpobbfljleoh/src/assets/expand_more_FILL0_wght400_GRAD0_opsz48.png" class="meetings_nav_icon rotate-180" id="collapsible-header-close-icon" style="opacity: 1;">
+      </div>
+      <div class="collapsible-content open" style="height: 100%; display: flex">
+        <!-- Div to login card items -->
+        <div id="section_vert_login" style="display: none; justify-content: flex-start; flex-direction: column; padding-bottom: 16px;"><div style="display: none">
+  <link rel="stylesheet" type="text/css" media="screen" href="chrome-extension://jkabohooekelnngbdkhpmpobbfljleoh/src/css/login.css">
+</div>
+
+<div class="login-white-paper-container">
+  <!-- <div class="welcome-img-container">
+  
+  </div> -->
+  
+
+  <!-- <div id="go-back-link">
+    <button id="go-back-button" class="btn-block mt-3">
+      <a
+        class="display-flex flex-row justify-center align-center cursor-pointer"
+      >
+        <img src="../icons/go_back.png" class="btn-icon" />
+        <p class="ml-2">Go back</p>
+      </a>
+    </button>
+  </div> -->
+</div>
+
+
+<!-- //login section -->
+<!-- <div class="login-white-paper-container"> -->
+    <div id="adminContainer">
+      <!-- <div class="paper container"> -->
+      <!-- <div class="card admin-permission-request-card"> -->
+      <div class="card-body text-justify" id="adminContent" style="line-height:0px !important; display: flex !important; flex-direction: column !important;">
+                <!-- <h5 class="card-subtitle">Company Policies!</h5> -->
+                <p class="text_date" style="">In some cases, you may require administrative approval from your
+                  organization to use Portd. You can initiate a request by sending them the following message.</p>
+                <div class="admin-permission-request-note-wrapper" style="
+                padding-bottom:1px !important; 
+                padding-top:1px !important;
+                display: flex !important;
+                flex: 1 !important;
+                max-height:50% !important;
+                ">
+                  <textarea rows="3" id="admin-permission-request-note" style="
+                  font-size: 75% !important;
+                      /* font-family: GELLIX-LIGHT !important; */
+                      width: 100% !important;
+                      flex:1;
+                      /* height: 73px !important; */
+                      width: 100% !important;
+                      max-width: 100% !important;
+                      /* max-height: 68px !important; */
+                      min-width: 100% !important;
+                      min-height: 68px !important;
+                      background: white !important;
+                      border-color: #cccccc00;
+                      border-radius: 7px;
+                      background: #cccccc00;
+                      color: #74768c;
+                      padding: 8px;
+                      margin-top: 7px;
+                      margin-bottom: 12px;
+                      box-shadow: 0px 2px 2px rgba(1, 0, 60, 0.2);
+                      outline:none !important;">                  </textarea>
+                </div>
+                <div class="admin-permission-request-buttons" style="
+                display: flex;
+                align-items: center;
+                justify-content: left;
+                gap: 2px;
+                justify-content: center;
+            ">
+                    <button id="copy-admin-permission-request-note" style="    border-radius: 5px!important;
+          
+                    padding: 3px;
+                    border: 0;
+                    width: 70px;
+             
+                    padding-bottom: 8px;
+                    font-family: GELLIX-MEDIUM;
+                    pointer-events: auto !important;
+                    cursor: pointer;
+                        " class="btn-small">copy</button>
+                    <button id="go-back-admin-permission-request-note" class="goBackAdmin" style="border-radius:5px!important;
+                        border-radius: 5px!important;
+                        /* background-color: #4c4f83; */
+                        padding: 2px;
+                        border: 0;
+                        width: 70px;
+                        color:black !important;
+                    border:solid 1px var(--muted) !important;
+                    background:transparent;
+                        padding-bottom:6px;
+                        /* font=-size:10px; */
+                        font-style:undelrine;
+                        font-family:GELLIX-MEDIUM;
+                        pointer-events: auto !important;
+                    cursor: pointer;
+                    margin-top: 0px;
+    width: 110px;
+                        ">go back</button>
+                    
+                    <!-- <a href="login.html" class="paper-btn btn-small menu-btn">Go Back</a> -->
+                </div>
+            </div>
+        <!-- </div> -->
+        <!-- </div> -->
+  </div>
+<div id="stars" style="display: flex;
+justify-content: center;">
+
+ <svg style="margin-top:32px; margin-bottom:18px;" width="76" height="59" viewBox="0 0 76 59" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g filter="url(#filter0_f_26_429)">
+    <path d="M40.4647 1L41.2025 3.27075L43.5901 3.27075L41.6585 4.67414L42.3963 6.94489L40.4647 5.54149L38.533 6.94489L39.2709 4.67414L37.3392 3.27075L39.7269 3.27075L40.4647 1Z" fill="#4E4E4E"></path>
+    <path d="M29.4968 30.5763L30.7418 34.6636H34.7709L31.5113 37.1898L32.7564 41.2771L29.4968 38.751L26.2372 41.2771L27.4822 37.1898L24.2227 34.6636H28.2517L29.4968 30.5763Z" fill="#4E4E4E"></path>
+    <path d="M58.5334 57.1059L59.1056 54.4139L56.7221 53.0378L59.4592 52.7501L60.0315 50.058L61.1509 52.5723L63.888 52.2846L61.8427 54.1262L62.9622 56.6405L60.5787 55.2643L58.5334 57.1059Z" fill="#4E4E4E"></path>
+    <path d="M4.31586 7.57251L5.05367 9.84326L7.44127 9.84326L5.50966 11.2467L6.24747 13.5174L4.31586 12.114L2.38424 13.5174L3.12206 11.2467L1.19044 9.84326L3.57805 9.84326L4.31586 7.57251Z" fill="#4E4E4E"></path>
+    <path d="M68.3978 20.7175L69.8734 24.6913H74.6487L70.7854 27.1473L72.2611 31.1211L68.3978 28.6651L64.5346 31.1211L66.0102 27.1473L62.147 24.6913H66.9222L68.3978 20.7175Z" fill="#4E4E4E"></path>
+    </g>
+    <defs>
+    <filter id="filter0_f_26_429" x="0.19043" y="0" width="75.4583" height="58.1059" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+    <feflood flood-opacity="0" result="BackgroundImageFix"></feflood>
+    <feblend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"></feblend>
+    <fegaussianblur stdDeviation="0.5" result="effect1_foregroundBlur_26_429"></fegaussianblur>
+    </filter>
+    </defs>
+    </svg>
+    
+      
+      
+      
+        
+      
+  
+</div>  
+
+  <p id="loginContentHeader" style="margin-top:0px" class=" adminContent select_account_title text-center w-100">
+    <b>the simplest schedule manager, ever.</b>
+  
+  </p>
+
+  <div id="loginContent" style="margin-bottom:14px; margin-top:-6px;
+  display: flex;
+    justify-content: center;" class="adminContent select_account_title text-center w-100">
+  link&nbsp;<b>one&nbsp;</b>or&nbsp;<b>all</b>&nbsp;of your calendars.<br>
+  
+  </div>
+  <div id="loginContent" style="margin-bottom:14px; margin-top:-12px !important;
+  display: flex;
+    justify-content: center;" class="adminContent select_account_title text-center w-100">
+  thats it.
+  </div>
+
+<div id="loginContent" class="login-white-paper-containerStack ">
+
+  <button id="google-calendar-btn" class="btn-block" style="z-index:10 !important">
+    <img src="chrome-extension://jkabohooekelnngbdkhpmpobbfljleoh/src/icons/google.png" alt="Google Calendar" class="btn-icon"><span class="ml-0"></span>
+  </button>
+
+  <button id="microsoft-calendar-btn" class="btn-block" style="z-index:9 !important">
+    <img src="chrome-extension://jkabohooekelnngbdkhpmpobbfljleoh/src/icons/microsoft.png" alt="Microsoft Calendar" class="btn-icon"><span class="ml-0"></span>
+  </button>
+
+  <button id="calendly-calendar-btn" class="btn-block" style="z-index:8 !important">
+    <img src="chrome-extension://jkabohooekelnngbdkhpmpobbfljleoh/src/icons/calendly.png" alt="Calendly Calendar" class="btn-icon"><span class="ml-0"></span>
+  </button>
+
+  <!-- <button id="google-calendar-btn " class="btn-block" style="z-index:10 !important">
+    <img
+      src="../icons/google.png"
+      alt="Google Calendar"
+      class="btn-icon"
+    />
+
+  </button>
+
+  <button id="microsoft-calendar-btn " class="btn-block"  style="z-index:9 !important">
+    <img
+      src="../icons/microsoft.png"
+      alt="Microsoft Calendar"
+      class="btn-icon"
+    />
+
+  </button>
+
+  <button id="calendly-calendar-btn " class="btn-block"  style="z-index:8 !important">
+    <img
+      src="../icons/calendly.png"
+      alt="Calendly Calendar"
+      class="btn-icon"
+    />
+
+  </button> -->
+</div>
+
+<button id="admin-btn" class="settings-btn-block mt-0 m-0 adminButton hub">
+  <!-- <div class="display-flex justify-center align-center w-20">
+    <img
+      src="../icons/microsoft.png"
+      alt="Microsoft Calendar"
+      class="btn-icon"
+    />
+  </div> -->
+  <div class="display-flex justify-center align-center w-100">
+    <span style="min-width: 290px;
+    text-align: center;" class="text_date_admin_login">Need admin approval? click 
+    <span class="text_date_admin_login" style="color:var(--primary2)">here</span> to get portd</span>
+  </div>
+  <div class="display-flex justify-center align-center w-20"></div>
+</button>
+
+
+  <!-- <div id="go-back-link">
+    <button id="go-back-button" class="btn-block mt-3">
+      <a
+        class="display-flex flex-row justify-center align-center cursor-pointer"
+      >
+        <img src="../icons/go_back.png" class="btn-icon" />
+        <p class="ml-2">Go back</p>
+      </a>
+    </button>
+  </div> -->
+
+
+</div>
+
+        <div id="section_vert_meetings" style="display: flex;"><div style="display: none">
+  <link rel="stylesheet" href="chrome-extension://jkabohooekelnngbdkhpmpobbfljleoh/src/css/calendar.css">
+</div>
+
+<div class="calendar-white-paper-container">
+  <!-- Container to show Meetings -->
+  <div class="display-flex flex-col w-100 align-center" id="meetings-div" style="display: flex; gap: 3px;">
+                        <div class="meeting_card cursor-pointer meeting_card_disabled" localid="-1894584931" id="-1894584931" accountid="115464844622001852268" datalink="https://www.google.com/calendar/u/bryanballi@gmail.com/event?eid=NmxwajZjdnVubW5rN21rM2s2cnRxaGhkN2hfMjAyNDA1MThUMTcwMDAwWiBicnlhbmJhbGxpQG0">
+                          <div class="display-flex flex-col ml-3">
+                            <div id="" class="cont_vert" datalink="https://www.google.com/calendar/u/bryanballi@gmail.com/event?eid=NmxwajZjdnVubW5rN21rM2s2cnRxaGhkN2hfMjAyNDA1MThUMTcwMDAwWiBicnlhbmJhbGxpQG0">
+                              <div class="cont_horiz">
+                                <h4 id="meeting_title" class="text_date">C&amp;P Sync</h4>
+                              </div>
+
+                              <div style="height:20px" class="display-flex flex-row justify-start align-center mt-0">
+                                <span class="material-symbols-outlined clock_icon" id="clock_icon">
+                                  schedule
+                                </span>
+                                <h3 id="meeting_time" class="meeting_time" style="margin-left: 5px">
+                                  12:00 PM
+                                </h3>
+                              </div>
+                            </div>
+                          </div>
+      
+              <div class="display-flex flex-row justify-center align-center mr-3">
+
+              <div id="meeting_note_edit_" class="meeting_edit_icon meeting_card_icon" datalink="https://www.google.com/calendar/u/bryanballi@gmail.com/event?eid=NmxwajZjdnVubW5rN21rM2s2cnRxaGhkN2hfMjAyNDA1MThUMTcwMDAwWiBicnlhbmJhbGxpQG0">
+
+            <span class="material-symbols-outlined">
+            event_upcoming
+            </span>
+            <p style="font-size: 8px" class="mt-0">event</p>
+            </div>
+
+            <div id="meeting_note_clickout_-1894584931" class=" meeting_card_icon">
+
+          <span class="material-symbols-outlined">
+  
+          event_note
+          </span>
+
+
+          <p style="font-size: 8px" class="mt-0">note</p>
+          </div>
+
+
+                <div id="meeting_video_clickout_-1894584931" class=" meeting_card_icon">
+
+                <span class="material-symbols-outlined">
+                video_chat
+</span>
+
+                <p style="font-size: 8px" class="mt-0">meet</p>
+                </div>
+
+
+
+
+              </div>
+            </div>
+                      <button id="video_call_new_meetings_card" style="gap:5px" class="new_meetings_card display-flex">
+      <span style="pointer-events:none;" class="material-symbols-outlined calendar_add_on">
+      calendar_add_on
+      </span>
+      <p class="mt-1 calendar_new_meetings_card" id="newMeetingCal" style="">new meeting</p>
+    </button><img src="chrome-extension://jkabohooekelnngbdkhpmpobbfljleoh/src/assets/empty_div.png" class="empty_div"><img src="chrome-extension://jkabohooekelnngbdkhpmpobbfljleoh/src/assets/empty_div.png" class="empty_div"><img src="chrome-extension://jkabohooekelnngbdkhpmpobbfljleoh/src/assets/empty_div.png" class="empty_div"></div>
+
+  <!-- Container to show loading spinnder -->
+  <div class="display-flex flex-col w-100 align-center justify-center" id="loader-div" style="height: 100%; display: none;">
+    <div class="loader"></div>
+  </div>
+
+  <!-- Container to show if there are no meetings -->
+  <div class="display-flex flex-1 flex-col w-100 justify-center mt-3" style="display: none;" id="no-meetings-div">
+    <!-- <h4 class="no_meeting_title">No meetings scheduled.</h4> -->
+
+    <button id="video_call_new_meetings_card" style="height:80px !important; gap:5px;" class="calendar_new_meetings_card display-flex">
+      
+      <!-- <img src="../assets/calendar_white.png" class="meetings_nav_icon" /> -->
+      <span style="pointer-events:none;" class="material-symbols-outlined">
+        calendar_add_on
+      </span>
+      
+
+      <p id="newMeetingCal" class="mt-1">new meeting</p>
+    </button>
+
+    <img src="chrome-extension://jkabohooekelnngbdkhpmpobbfljleoh/src/assets/empty_div.png" class="calendar_empty_div">
+    <img src="chrome-extension://jkabohooekelnngbdkhpmpobbfljleoh/src/assets/empty_div.png" class="calendar_empty_div">
+    <img src="chrome-extension://jkabohooekelnngbdkhpmpobbfljleoh/src/assets/empty_div.png" class="calendar_empty_div">
+
+    <div class="settings-footer" style="display: none">
+      <span class="refresh-timer-footer">Refresh in :<span id="base-timer-label">00</span><img src="chrome-extension://jkabohooekelnngbdkhpmpobbfljleoh/src/icons/refresh.png"></span>
+    </div>
+  </div>
+</div>
+</div>
+        <!-- Div to show create events accounts list -->
+        <div id="section_vert_create_events" style="display: none"><div style="display: none">
+  <link rel="stylesheet" href="chrome-extension://jkabohooekelnngbdkhpmpobbfljleoh/src/css/create-event.css">
+  <link rel="stylesheet" href="./css2">
+</div>
+
+<div class="create-event-white-paper-container" style="height: 45vh">
+
+  <p class="select_account_title">Select account to setup meeting</p>
+  <!-- <div id="welcome-container"
+  style="
+  background-color:red; 
+  width:100%; 
+  height:350px;
+  ">
+
+  </div> -->
+  <!-- <div class="welcome-img-container">
+  
+  </div> -->
+  <div id="accounts-container">
+        <div class="display-flex flex-row w-100 align-center justify-center account create-meeting-account" provider="google" email="bryanballi@gmail.com">
+          <img src="chrome-extension://jkabohooekelnngbdkhpmpobbfljleoh/src/icons/google.png" alt="google" height="20" width="20" class="btn-icon">
+          <h4 class="account-email ml-2">bryanballi@gmail.com</h4>
+        </div>
+      </div>
+
+<div class="w-full" style="width: 100%;
+  display: flex;
+  /* gap: 5px; */
+  justify-content: space-between;">
+  <div class="col-12 col account_settings hub" id="go_to_settings">
+    <span class="material-symbols-outlined hub_icon">
+      hub
+      </span>
+    <p class="ml-2">Link New Account</p>
+  </div>
+  <!-- <div class="col-12 col account_back ml-2 w-sm red" id="go_to_settings">
+    <p class="ml-2"></p>
+    <span class="material-symbols-outlined">
+      undo
+      </span></div>
+<div> -->
+</div>
+</div></div>
+      </div>
+    </div>
+
+    <!-- Notes List -->
+    <div class="collapsible collapsibleNotes flex-0" style="flex: 0 1 0%; display: flex; translate: none; rotate: none; scale: none; transform: translate(0px, 0px); opacity: 0;">
+      <div class="collapsible-header collapsibleNotesHeader" id="notes-collapsible-header" style="padding-bottom: 0px !important; opacity: 1; pointer-events: all; display: flex;">
+        <p class="collapsible-title material-symbols-outlined-custom">notes</p>
+        <div class="display-flex flex-row justify-center align-center" style="pointer-events: none; padding-bottom: 0px !important;">
+          <img src="chrome-extension://jkabohooekelnngbdkhpmpobbfljleoh/src/assets/open_in_full.png" style="
+              height: 15px !important;
+              width: 15px !important;
+              margin-right: 2px;
+              cursor: pointer;
+              user-select: none;
+              pointer-events: all;
+              margin-right: 10px;
+              opacity:0.9;
+            " id="expand-notes">
+
+          <!-- <span 
+          id="collapsible-header-close-icon" class="material-symbols-rounded expand_all meetings_nav_icon">
+            expand_all
+            </span> -->
+          <img src="chrome-extension://jkabohooekelnngbdkhpmpobbfljleoh/src/assets/expand_more_FILL0_wght400_GRAD0_opsz48.png" class="meetings_nav_icon rotate-0" id="collapsible-header-close-icon">
+        </div>
+      </div>
+
+      
+      <div class="collapsible-content closed" style="height: 100%; display: flex">
+        <div class="display-flex flex-col" style="
+            overflow-y: hidden;
+            height: 95%;
+            overflow-x: hidden;
+            padding-right: 2px;
+            margin-right: 0px;
+            width: 100%;
+            flex: 1;
+          ">
+          <div id="note-typing-container-default" class="note-typing-container display-flex" style="height: 66px; min-height: 66px; max-height: 66px" localid="5f0c3579-ce50-4dbb-883d-ac7db5a5dec6" agenda="" starttime="2024-05-19T19:12:40.609Z" accountid="null">
+            <div class="ql-toolbar ql-snow"><span class="ql-formats"><button type="button" class="ql-bold"><svg viewBox="0 0 18 18"> <path class="ql-stroke" d="M5,4H9.5A2.5,2.5,0,0,1,12,6.5v0A2.5,2.5,0,0,1,9.5,9H5A0,0,0,0,1,5,9V4A0,0,0,0,1,5,4Z"></path> <path class="ql-stroke" d="M5,9h5.5A2.5,2.5,0,0,1,13,11.5v0A2.5,2.5,0,0,1,10.5,14H5a0,0,0,0,1,0,0V9A0,0,0,0,1,5,9Z"></path> </svg></button><button type="button" class="ql-italic"><svg viewBox="0 0 18 18"> <line class="ql-stroke" x1="7" x2="13" y1="4" y2="4"></line> <line class="ql-stroke" x1="5" x2="11" y1="14" y2="14"></line> <line class="ql-stroke" x1="8" x2="10" y1="14" y2="4"></line> </svg></button><button type="button" class="ql-underline"><svg viewBox="0 0 18 18"> <path class="ql-stroke" d="M5,3V9a4.012,4.012,0,0,0,4,4H9a4.012,4.012,0,0,0,4-4V3"></path> <rect class="ql-fill" height="1" rx="0.5" ry="0.5" width="12" x="3" y="15"></rect> </svg></button></span><span class="ql-formats"><button type="button" class="ql-image"><svg viewBox="0 0 18 18"> <rect class="ql-stroke" height="10" width="12" x="3" y="4"></rect> <circle class="ql-fill" cx="6" cy="7" r="1"></circle> <polyline class="ql-even ql-fill" points="5 12 5 11 7 9 8 10 11 7 13 9 13 12 5 12"></polyline> </svg></button></span><span class="ql-formats"><button type="button" class="ql-list" value="bullet"><svg viewBox="0 0 18 18"> <line class="ql-stroke" x1="6" x2="15" y1="4" y2="4"></line> <line class="ql-stroke" x1="6" x2="15" y1="9" y2="9"></line> <line class="ql-stroke" x1="6" x2="15" y1="14" y2="14"></line> <line class="ql-stroke" x1="3" x2="3" y1="4" y2="4"></line> <line class="ql-stroke" x1="3" x2="3" y1="9" y2="9"></line> <line class="ql-stroke" x1="3" x2="3" y1="14" y2="14"></line> </svg></button><button type="button" class="ql-list" value="ordered"><svg viewBox="0 0 18 18"> <line class="ql-stroke" x1="7" x2="15" y1="4" y2="4"></line> <line class="ql-stroke" x1="7" x2="15" y1="9" y2="9"></line> <line class="ql-stroke" x1="7" x2="15" y1="14" y2="14"></line> <line class="ql-stroke ql-thin" x1="2.5" x2="4.5" y1="5.5" y2="5.5"></line> <path class="ql-fill" d="M3.5,6A0.5,0.5,0,0,1,3,5.5V3.085l-0.276.138A0.5,0.5,0,0,1,2.053,3c-0.124-.247-0.023-0.324.224-0.447l1-.5A0.5,0.5,0,0,1,4,2.5v3A0.5,0.5,0,0,1,3.5,6Z"></path> <path class="ql-stroke ql-thin" d="M4.5,10.5h-2c0-.234,1.85-1.076,1.85-2.234A0.959,0.959,0,0,0,2.5,8.156"></path> <path class="ql-stroke ql-thin" d="M2.5,14.846a0.959,0.959,0,0,0,1.85-.109A0.7,0.7,0,0,0,3.75,14a0.688,0.688,0,0,0,.6-0.736,0.959,0.959,0,0,0-1.85-.109"></path> </svg></button></span><span class="ql-formats" style="margin-left: 68px; margin-right: 0px; align-self: flex-end;"><div class="display-flex flex-row align-center ml-2">
+  
+                                <div id="toolbar_icon_copy_0" class="cursor-pointer select-none ml-2 " localid="5f0c3579-ce50-4dbb-883d-ac7db5a5dec6">
+                                  <span class="material-symbols-outlined copy"> content_copy </span>
+                                  </div>
+
+                                  <div id="toolbar_icon_delete_0" class="cursor-pointer select-none" localid="5f0c3579-ce50-4dbb-883d-ac7db5a5dec6">
+                                  <span class="material-symbols-outlined trash"> delete </span>
+                                  </div>
+                            </div>
+                            </span></div><div><input type="text" class="note-typing-title" id="note-typing-title-0" value="untitled" edit-mode="no" placeholder="untitled"></div><div id="note-typing-description-default" class="note-typing-description-default ql-container ql-snow" contenteditable="true" style="height: 76px; min-height: 76px; max-height: 76px; position: relative;"><div class="ql-editor ql-blank" data-gramm="false" contenteditable="true"><p><br></p></div><div class="ql-clipboard" contenteditable="true" tabindex="-1"></div><div class="ql-tooltip ql-hidden"><a class="ql-preview" target="_blank" href="about:blank"></a><input type="text" data-formula="e=mc^2" data-link="https://quilljs.com" data-video="Embed URL"><a class="ql-action"></a><a class="ql-remove"></a></div></div>
+          </div>
+
+          <div id="previous-notes">
+          <div class="note" id="edit-button" accountid="undefined" localid="50c70beb-69fc-413a-96f5-05b4034ab703" cardid="50c70beb-69fc-413a-96f5-05b4034ab703">
+              <h4 class="note-title">k</h4>
+              <h5 class="note-subtitle">05/19/2024</h5>  
+
+              <div class="card-edit_note" id="edit-button" localid="50c70beb-69fc-413a-96f5-05b4034ab703">
+                <span class="material-symbols-outlined" style="font-size:20px">
+                    edit_note
+                </span>  
+              </div>
+
+              <div class="card-delete" id="delete-button" localid="50c70beb-69fc-413a-96f5-05b4034ab703">
+                <span class="material-symbols-outlined" style="font-size:18px">
+                    delete 
+                </span>  
+              </div>
+          </div>
+    
+          <div class="note" id="edit-button" accountid="undefined" localid="a434c848-7816-4135-ac5b-a4a4abbfb896" cardid="a434c848-7816-4135-ac5b-a4a4abbfb896">
+              <h4 class="note-title">bank</h4>
+              <h5 class="note-subtitle">05/11/2024</h5>  
+
+              <div class="card-edit_note" id="edit-button" localid="a434c848-7816-4135-ac5b-a4a4abbfb896">
+                <span class="material-symbols-outlined" style="font-size:20px">
+                    edit_note
+                </span>  
+              </div>
+
+              <div class="card-delete" id="delete-button" localid="a434c848-7816-4135-ac5b-a4a4abbfb896">
+                <span class="material-symbols-outlined" style="font-size:18px">
+                    delete 
+                </span>  
+              </div>
+          </div>
+    
+          <div class="note" id="edit-button" accountid="undefined" localid="2e33ad95-7a14-42a0-8fc6-f3ec18932941" cardid="2e33ad95-7a14-42a0-8fc6-f3ec18932941">
+              <h4 class="note-title">ry</h4>
+              <h5 class="note-subtitle">05/11/2024</h5>  
+
+              <div class="card-edit_note" id="edit-button" localid="2e33ad95-7a14-42a0-8fc6-f3ec18932941">
+                <span class="material-symbols-outlined" style="font-size:20px">
+                    edit_note
+                </span>  
+              </div>
+
+              <div class="card-delete" id="delete-button" localid="2e33ad95-7a14-42a0-8fc6-f3ec18932941">
+                <span class="material-symbols-outlined" style="font-size:18px">
+                    delete 
+                </span>  
+              </div>
+          </div>
+    
+          <div class="note" id="edit-button" accountid="undefined" localid="b2053111-1abf-487c-95db-6fbe662817fb" cardid="b2053111-1abf-487c-95db-6fbe662817fb">
+              <h4 class="note-title">brenillab@1978</h4>
+              <h5 class="note-subtitle">05/11/2024</h5>  
+
+              <div class="card-edit_note" id="edit-button" localid="b2053111-1abf-487c-95db-6fbe662817fb">
+                <span class="material-symbols-outlined" style="font-size:20px">
+                    edit_note
+                </span>  
+              </div>
+
+              <div class="card-delete" id="delete-button" localid="b2053111-1abf-487c-95db-6fbe662817fb">
+                <span class="material-symbols-outlined" style="font-size:18px">
+                    delete 
+                </span>  
+              </div>
+          </div>
+    
+          <div class="note" id="edit-button" accountid="undefined" localid="d2274311-2676-46ce-971d-b7c4b7ef2923" cardid="d2274311-2676-46ce-971d-b7c4b7ef2923">
+              <h4 class="note-title">Codeandpalettesocials@1978</h4>
+              <h5 class="note-subtitle">05/11/2024</h5>  
+
+              <div class="card-edit_note" id="edit-button" localid="d2274311-2676-46ce-971d-b7c4b7ef2923">
+                <span class="material-symbols-outlined" style="font-size:20px">
+                    edit_note
+                </span>  
+              </div>
+
+              <div class="card-delete" id="delete-button" localid="d2274311-2676-46ce-971d-b7c4b7ef2923">
+                <span class="material-symbols-outlined" style="font-size:18px">
+                    delete 
+                </span>  
+              </div>
+          </div>
+    
+          <div class="note" id="edit-button" accountid="undefined" localid="3791d178-be23-406a-bed1-aac37337a1c1" cardid="3791d178-be23-406a-bed1-aac37337a1c1">
+              <h4 class="note-title">ndpalettesocials@gmail.com</h4>
+              <h5 class="note-subtitle">05/11/2024</h5>  
+
+              <div class="card-edit_note" id="edit-button" localid="3791d178-be23-406a-bed1-aac37337a1c1">
+                <span class="material-symbols-outlined" style="font-size:20px">
+                    edit_note
+                </span>  
+              </div>
+
+              <div class="card-delete" id="delete-button" localid="3791d178-be23-406a-bed1-aac37337a1c1">
+                <span class="material-symbols-outlined" style="font-size:18px">
+                    delete 
+                </span>  
+              </div>
+          </div>
+    
+          <div class="note" id="edit-button" accountid="undefined" localid="334295be-7228-4572-a5dd-271bcf28f930" cardid="334295be-7228-4572-a5dd-271bcf28f930">
+              <h4 class="note-title"> just checking in here, hope to have some more stuff for you soon</h4>
+              <h5 class="note-subtitle">05/06/2024</h5>  
+
+              <div class="card-edit_note" id="edit-button" localid="334295be-7228-4572-a5dd-271bcf28f930">
+                <span class="material-symbols-outlined" style="font-size:20px">
+                    edit_note
+                </span>  
+              </div>
+
+              <div class="card-delete" id="delete-button" localid="334295be-7228-4572-a5dd-271bcf28f930">
+                <span class="material-symbols-outlined" style="font-size:18px">
+                    delete 
+                </span>  
+              </div>
+          </div>
+    
+          <div class="note" id="edit-button" accountid="undefined" localid="ac8a9b5a-c117-4858-9f14-89e346fb3c18" cardid="ac8a9b5a-c117-4858-9f14-89e346fb3c18">
+              <h4 class="note-title">cord </h4>
+              <h5 class="note-subtitle">05/02/2024</h5>  
+
+              <div class="card-edit_note" id="edit-button" localid="ac8a9b5a-c117-4858-9f14-89e346fb3c18">
+                <span class="material-symbols-outlined" style="font-size:20px">
+                    edit_note
+                </span>  
+              </div>
+
+              <div class="card-delete" id="delete-button" localid="ac8a9b5a-c117-4858-9f14-89e346fb3c18">
+                <span class="material-symbols-outlined" style="font-size:18px">
+                    delete 
+                </span>  
+              </div>
+          </div>
+    
+          <div class="note" id="edit-button" accountid="undefined" localid="c418b88d-f395-451f-aca1-3064a2a9934b" cardid="c418b88d-f395-451f-aca1-3064a2a9934b">
+              <h4 class="note-title"> </h4>
+              <h5 class="note-subtitle">04/30/2024</h5>  
+
+              <div class="card-edit_note" id="edit-button" localid="c418b88d-f395-451f-aca1-3064a2a9934b">
+                <span class="material-symbols-outlined" style="font-size:20px">
+                    edit_note
+                </span>  
+              </div>
+
+              <div class="card-delete" id="delete-button" localid="c418b88d-f395-451f-aca1-3064a2a9934b">
+                <span class="material-symbols-outlined" style="font-size:18px">
+                    delete 
+                </span>  
+              </div>
+          </div>
+    
+          <div class="note" id="edit-button" accountid="undefined" localid="bf1b7f1b-1832-464a-acdc-65bceec91ee5" cardid="bf1b7f1b-1832-464a-acdc-65bceec91ee5">
+              <h4 class="note-title">Ebrenillab60@</h4>
+              <h5 class="note-subtitle">04/30/2024</h5>  
+
+              <div class="card-edit_note" id="edit-button" localid="bf1b7f1b-1832-464a-acdc-65bceec91ee5">
+                <span class="material-symbols-outlined" style="font-size:20px">
+                    edit_note
+                </span>  
+              </div>
+
+              <div class="card-delete" id="delete-button" localid="bf1b7f1b-1832-464a-acdc-65bceec91ee5">
+                <span class="material-symbols-outlined" style="font-size:18px">
+                    delete 
+                </span>  
+              </div>
+          </div>
+    
+          <div class="note" id="edit-button" accountid="undefined" localid="8b5c51b3-5edb-462c-81f5-8c78851ce2b8" cardid="8b5c51b3-5edb-462c-81f5-8c78851ce2b8">
+              <h4 class="note-title">Sync</h4>
+              <h5 class="note-subtitle">04/22/2024</h5>  
+
+              <div class="card-edit_note" id="edit-button" localid="8b5c51b3-5edb-462c-81f5-8c78851ce2b8">
+                <span class="material-symbols-outlined" style="font-size:20px">
+                    edit_note
+                </span>  
+              </div>
+
+              <div class="card-delete" id="delete-button" localid="8b5c51b3-5edb-462c-81f5-8c78851ce2b8">
+                <span class="material-symbols-outlined" style="font-size:18px">
+                    delete 
+                </span>  
+              </div>
+          </div>
+    
+          <div class="note" id="edit-button" accountid="undefined" localid="3c9a447f-2c69-4592-8669-158c0549d65c" cardid="3c9a447f-2c69-4592-8669-158c0549d65c">
+              <h4 class="note-title">bump</h4>
+              <h5 class="note-subtitle">04/22/2024</h5>  
+
+              <div class="card-edit_note" id="edit-button" localid="3c9a447f-2c69-4592-8669-158c0549d65c">
+                <span class="material-symbols-outlined" style="font-size:20px">
+                    edit_note
+                </span>  
+              </div>
+
+              <div class="card-delete" id="delete-button" localid="3c9a447f-2c69-4592-8669-158c0549d65c">
+                <span class="material-symbols-outlined" style="font-size:18px">
+                    delete 
+                </span>  
+              </div>
+          </div>
+    
+          <div class="note" id="edit-button" accountid="undefined" localid="35bf09c9-7af0-41a8-a4b8-54c29e0633b6" cardid="35bf09c9-7af0-41a8-a4b8-54c29e0633b6">
+              <h4 class="note-title">Viva Acid</h4>
+              <h5 class="note-subtitle">04/17/2024</h5>  
+
+              <div class="card-edit_note" id="edit-button" localid="35bf09c9-7af0-41a8-a4b8-54c29e0633b6">
+                <span class="material-symbols-outlined" style="font-size:20px">
+                    edit_note
+                </span>  
+              </div>
+
+              <div class="card-delete" id="delete-button" localid="35bf09c9-7af0-41a8-a4b8-54c29e0633b6">
+                <span class="material-symbols-outlined" style="font-size:18px">
+                    delete 
+                </span>  
+              </div>
+          </div>
+    
+          <div class="note" id="edit-button" accountid="undefined" localid="99049d00-1f27-4ebf-857c-cb81b5dc1298" cardid="99049d00-1f27-4ebf-857c-cb81b5dc1298">
+              <h4 class="note-title">ut market</h4>
+              <h5 class="note-subtitle">04/15/2024</h5>  
+
+              <div class="card-edit_note" id="edit-button" localid="99049d00-1f27-4ebf-857c-cb81b5dc1298">
+                <span class="material-symbols-outlined" style="font-size:20px">
+                    edit_note
+                </span>  
+              </div>
+
+              <div class="card-delete" id="delete-button" localid="99049d00-1f27-4ebf-857c-cb81b5dc1298">
+                <span class="material-symbols-outlined" style="font-size:18px">
+                    delete 
+                </span>  
+              </div>
+          </div>
+    
+          <div class="note" id="edit-button" accountid="undefined" localid="8c6a1f8e-f040-447e-b7c3-db95885d8213" cardid="8c6a1f8e-f040-447e-b7c3-db95885d8213">
+              <h4 class="note-title">e</h4>
+              <h5 class="note-subtitle">04/15/2024</h5>  
+
+              <div class="card-edit_note" id="edit-button" localid="8c6a1f8e-f040-447e-b7c3-db95885d8213">
+                <span class="material-symbols-outlined" style="font-size:20px">
+                    edit_note
+                </span>  
+              </div>
+
+              <div class="card-delete" id="delete-button" localid="8c6a1f8e-f040-447e-b7c3-db95885d8213">
+                <span class="material-symbols-outlined" style="font-size:18px">
+                    delete 
+                </span>  
+              </div>
+          </div>
+    
+          <div class="note" id="edit-button" accountid="undefined" localid="f5975670-0d3a-4d50-ac76-9d2aba0708d0" cardid="f5975670-0d3a-4d50-ac76-9d2aba0708d0">
+              <h4 class="note-title">metest</h4>
+              <h5 class="note-subtitle">04/15/2024</h5>  
+
+              <div class="card-edit_note" id="edit-button" localid="f5975670-0d3a-4d50-ac76-9d2aba0708d0">
+                <span class="material-symbols-outlined" style="font-size:20px">
+                    edit_note
+                </span>  
+              </div>
+
+              <div class="card-delete" id="delete-button" localid="f5975670-0d3a-4d50-ac76-9d2aba0708d0">
+                <span class="material-symbols-outlined" style="font-size:18px">
+                    delete 
+                </span>  
+              </div>
+          </div>
+    
+          <div class="note" id="edit-button" accountid="undefined" localid="ab9c38d7-6ddd-48f4-a42c-f242578774e6" cardid="ab9c38d7-6ddd-48f4-a42c-f242578774e6">
+              <h4 class="note-title">TALK THEN!</h4>
+              <h5 class="note-subtitle">04/15/2024</h5>  
+
+              <div class="card-edit_note" id="edit-button" localid="ab9c38d7-6ddd-48f4-a42c-f242578774e6">
+                <span class="material-symbols-outlined" style="font-size:20px">
+                    edit_note
+                </span>  
+              </div>
+
+              <div class="card-delete" id="delete-button" localid="ab9c38d7-6ddd-48f4-a42c-f242578774e6">
+                <span class="material-symbols-outlined" style="font-size:18px">
+                    delete 
+                </span>  
+              </div>
+          </div>
+    
+          <div class="note" id="edit-button" accountid="undefined" localid="11f2f993-4e1e-42d9-bf94-d8a496884dab" cardid="11f2f993-4e1e-42d9-bf94-d8a496884dab">
+              <h4 class="note-title">65129</h4>
+              <h5 class="note-subtitle">04/15/2024</h5>  
+
+              <div class="card-edit_note" id="edit-button" localid="11f2f993-4e1e-42d9-bf94-d8a496884dab">
+                <span class="material-symbols-outlined" style="font-size:20px">
+                    edit_note
+                </span>  
+              </div>
+
+              <div class="card-delete" id="delete-button" localid="11f2f993-4e1e-42d9-bf94-d8a496884dab">
+                <span class="material-symbols-outlined" style="font-size:18px">
+                    delete 
+                </span>  
+              </div>
+          </div>
+    
+          <div class="note" id="edit-button" accountid="undefined" localid="78400bd7-74fe-4acb-be39-c117879a931b" cardid="78400bd7-74fe-4acb-be39-c117879a931b">
+              <h4 class="note-title">lab55@</h4>
+              <h5 class="note-subtitle">04/15/2024</h5>  
+
+              <div class="card-edit_note" id="edit-button" localid="78400bd7-74fe-4acb-be39-c117879a931b">
+                <span class="material-symbols-outlined" style="font-size:20px">
+                    edit_note
+                </span>  
+              </div>
+
+              <div class="card-delete" id="delete-button" localid="78400bd7-74fe-4acb-be39-c117879a931b">
+                <span class="material-symbols-outlined" style="font-size:18px">
+                    delete 
+                </span>  
+              </div>
+          </div>
+    
+          <div class="note" id="edit-button" accountid="undefined" localid="48996d75-70ab-43f1-b38f-24fd6d34affa" cardid="48996d75-70ab-43f1-b38f-24fd6d34affa">
+              <h4 class="note-title">&amp; P</h4>
+              <h5 class="note-subtitle">04/14/2024</h5>  
+
+              <div class="card-edit_note" id="edit-button" localid="48996d75-70ab-43f1-b38f-24fd6d34affa">
+                <span class="material-symbols-outlined" style="font-size:20px">
+                    edit_note
+                </span>  
+              </div>
+
+              <div class="card-delete" id="delete-button" localid="48996d75-70ab-43f1-b38f-24fd6d34affa">
+                <span class="material-symbols-outlined" style="font-size:18px">
+                    delete 
+                </span>  
+              </div>
+          </div>
+    
+          <div class="note" id="edit-button" accountid="undefined" localid="65d514b3-7a61-427d-8ada-bdd48ead9e27" cardid="65d514b3-7a61-427d-8ada-bdd48ead9e27">
+              <h4 class="note-title">Yo Haseeb! Really want you to come </h4>
+              <h5 class="note-subtitle">04/14/2024</h5>  
+
+              <div class="card-edit_note" id="edit-button" localid="65d514b3-7a61-427d-8ada-bdd48ead9e27">
+                <span class="material-symbols-outlined" style="font-size:20px">
+                    edit_note
+                </span>  
+              </div>
+
+              <div class="card-delete" id="delete-button" localid="65d514b3-7a61-427d-8ada-bdd48ead9e27">
+                <span class="material-symbols-outlined" style="font-size:18px">
+                    delete 
+                </span>  
+              </div>
+          </div>
+    
+          <div class="note" id="edit-button" accountid="undefined" localid="c3328be0-3e41-444f-b8fe-c313ec95b540" cardid="c3328be0-3e41-444f-b8fe-c313ec95b540">
+              <h4 class="note-title">ditTrax</h4>
+              <h5 class="note-subtitle">04/14/2024</h5>  
+
+              <div class="card-edit_note" id="edit-button" localid="c3328be0-3e41-444f-b8fe-c313ec95b540">
+                <span class="material-symbols-outlined" style="font-size:20px">
+                    edit_note
+                </span>  
+              </div>
+
+              <div class="card-delete" id="delete-button" localid="c3328be0-3e41-444f-b8fe-c313ec95b540">
+                <span class="material-symbols-outlined" style="font-size:18px">
+                    delete 
+                </span>  
+              </div>
+          </div>
+    
+          <div class="note" id="edit-button" accountid="undefined" localid="924c3200-472d-45e6-91a5-f4ae3625a198" cardid="924c3200-472d-45e6-91a5-f4ae3625a198">
+              <h4 class="note-title">ha</h4>
+              <h5 class="note-subtitle">04/14/2024</h5>  
+
+              <div class="card-edit_note" id="edit-button" localid="924c3200-472d-45e6-91a5-f4ae3625a198">
+                <span class="material-symbols-outlined" style="font-size:20px">
+                    edit_note
+                </span>  
+              </div>
+
+              <div class="card-delete" id="delete-button" localid="924c3200-472d-45e6-91a5-f4ae3625a198">
+                <span class="material-symbols-outlined" style="font-size:18px">
+                    delete 
+                </span>  
+              </div>
+          </div>
+    
+          <div class="note" id="edit-button" accountid="undefined" localid="c040fdc3-17c3-4991-b7a3-cc8cc2fb51df" cardid="c040fdc3-17c3-4991-b7a3-cc8cc2fb51df">
+              <h4 class="note-title">Untitled</h4>
+              <h5 class="note-subtitle">04/14/2024</h5>  
+
+              <div class="card-edit_note" id="edit-button" localid="c040fdc3-17c3-4991-b7a3-cc8cc2fb51df">
+                <span class="material-symbols-outlined" style="font-size:20px">
+                    edit_note
+                </span>  
+              </div>
+
+              <div class="card-delete" id="delete-button" localid="c040fdc3-17c3-4991-b7a3-cc8cc2fb51df">
+                <span class="material-symbols-outlined" style="font-size:18px">
+                    delete 
+                </span>  
+              </div>
+          </div>
+    
+          <div class="note" id="edit-button" accountid="undefined" localid="aedce48f-fd94-4e09-a08c-504f1b7f1d85" cardid="aedce48f-fd94-4e09-a08c-504f1b7f1d85">
+              <h4 class="note-title">nd palette</h4>
+              <h5 class="note-subtitle">04/14/2024</h5>  
+
+              <div class="card-edit_note" id="edit-button" localid="aedce48f-fd94-4e09-a08c-504f1b7f1d85">
+                <span class="material-symbols-outlined" style="font-size:20px">
+                    edit_note
+                </span>  
+              </div>
+
+              <div class="card-delete" id="delete-button" localid="aedce48f-fd94-4e09-a08c-504f1b7f1d85">
+                <span class="material-symbols-outlined" style="font-size:18px">
+                    delete 
+                </span>  
+              </div>
+          </div>
+    
+          <div class="note" id="edit-button" accountid="undefined" localid="39936234-122a-4125-9b6d-f5a93b5d5e64" cardid="39936234-122a-4125-9b6d-f5a93b5d5e64">
+              <h4 class="note-title">C&amp;P Sync</h4>
+              <h5 class="note-subtitle">04/11/2024</h5>  
+
+              <div class="card-edit_note" id="edit-button" localid="39936234-122a-4125-9b6d-f5a93b5d5e64">
+                <span class="material-symbols-outlined" style="font-size:20px">
+                    edit_note
+                </span>  
+              </div>
+
+              <div class="card-delete" id="delete-button" localid="39936234-122a-4125-9b6d-f5a93b5d5e64">
+                <span class="material-symbols-outlined" style="font-size:18px">
+                    delete 
+                </span>  
+              </div>
+          </div>
+    
+          <div class="note" id="edit-button" accountid="undefined" localid="63ef4427-02c5-4608-bee6-d1f212cbec29" cardid="63ef4427-02c5-4608-bee6-d1f212cbec29">
+              <h4 class="note-title">a quick check in</h4>
+              <h5 class="note-subtitle">04/10/2024</h5>  
+
+              <div class="card-edit_note" id="edit-button" localid="63ef4427-02c5-4608-bee6-d1f212cbec29">
+                <span class="material-symbols-outlined" style="font-size:20px">
+                    edit_note
+                </span>  
+              </div>
+
+              <div class="card-delete" id="delete-button" localid="63ef4427-02c5-4608-bee6-d1f212cbec29">
+                <span class="material-symbols-outlined" style="font-size:18px">
+                    delete 
+                </span>  
+              </div>
+          </div>
+    
+          <div class="note" id="edit-button" accountid="undefined" localid="f0736ab6-6c19-42dd-abe0-09636a26d88d" cardid="f0736ab6-6c19-42dd-abe0-09636a26d88d">
+              <h4 class="note-title">codeandpalette</h4>
+              <h5 class="note-subtitle">04/10/2024</h5>  
+
+              <div class="card-edit_note" id="edit-button" localid="f0736ab6-6c19-42dd-abe0-09636a26d88d">
+                <span class="material-symbols-outlined" style="font-size:20px">
+                    edit_note
+                </span>  
+              </div>
+
+              <div class="card-delete" id="delete-button" localid="f0736ab6-6c19-42dd-abe0-09636a26d88d">
+                <span class="material-symbols-outlined" style="font-size:18px">
+                    delete 
+                </span>  
+              </div>
+          </div>
+    
+          <div class="note" id="edit-button" accountid="undefined" localid="6cd22628-dce2-42b8-984c-c41b28ca5f67" cardid="6cd22628-dce2-42b8-984c-c41b28ca5f67">
+              <h4 class="note-title">3point</h4>
+              <h5 class="note-subtitle">04/10/2024</h5>  
+
+              <div class="card-edit_note" id="edit-button" localid="6cd22628-dce2-42b8-984c-c41b28ca5f67">
+                <span class="material-symbols-outlined" style="font-size:20px">
+                    edit_note
+                </span>  
+              </div>
+
+              <div class="card-delete" id="delete-button" localid="6cd22628-dce2-42b8-984c-c41b28ca5f67">
+                <span class="material-symbols-outlined" style="font-size:18px">
+                    delete 
+                </span>  
+              </div>
+          </div>
+    
+          <div class="note" id="edit-button" accountid="undefined" localid="1f61a2ac-42ce-4126-9e66-f49053cd30bb" cardid="1f61a2ac-42ce-4126-9e66-f49053cd30bb">
+              <h4 class="note-title">itie</h4>
+              <h5 class="note-subtitle">04/10/2024</h5>  
+
+              <div class="card-edit_note" id="edit-button" localid="1f61a2ac-42ce-4126-9e66-f49053cd30bb">
+                <span class="material-symbols-outlined" style="font-size:20px">
+                    edit_note
+                </span>  
+              </div>
+
+              <div class="card-delete" id="delete-button" localid="1f61a2ac-42ce-4126-9e66-f49053cd30bb">
+                <span class="material-symbols-outlined" style="font-size:18px">
+                    delete 
+                </span>  
+              </div>
+          </div>
+    
+          <div class="note" id="edit-button" accountid="undefined" localid="879498f2-536a-4132-8732-28fb88783270" cardid="879498f2-536a-4132-8732-28fb88783270">
+              <h4 class="note-title">3122865129</h4>
+              <h5 class="note-subtitle">04/08/2024</h5>  
+
+              <div class="card-edit_note" id="edit-button" localid="879498f2-536a-4132-8732-28fb88783270">
+                <span class="material-symbols-outlined" style="font-size:20px">
+                    edit_note
+                </span>  
+              </div>
+
+              <div class="card-delete" id="delete-button" localid="879498f2-536a-4132-8732-28fb88783270">
+                <span class="material-symbols-outlined" style="font-size:18px">
+                    delete 
+                </span>  
+              </div>
+          </div>
+    
+          <div class="note" id="edit-button" accountid="undefined" localid="475b5896-c413-465b-afee-bd6cb5b3bc6b" cardid="475b5896-c413-465b-afee-bd6cb5b3bc6b">
+              <h4 class="note-title">clickup</h4>
+              <h5 class="note-subtitle">04/07/2024</h5>  
+
+              <div class="card-edit_note" id="edit-button" localid="475b5896-c413-465b-afee-bd6cb5b3bc6b">
+                <span class="material-symbols-outlined" style="font-size:20px">
+                    edit_note
+                </span>  
+              </div>
+
+              <div class="card-delete" id="delete-button" localid="475b5896-c413-465b-afee-bd6cb5b3bc6b">
+                <span class="material-symbols-outlined" style="font-size:18px">
+                    delete 
+                </span>  
+              </div>
+          </div>
+    
+          <div class="note" id="edit-button" accountid="undefined" localid="b72d1571-75ed-4d2a-bc83-f4afec30344d" cardid="b72d1571-75ed-4d2a-bc83-f4afec30344d">
+              <h4 class="note-title">ry cool!</h4>
+              <h5 class="note-subtitle">04/07/2024</h5>  
+
+              <div class="card-edit_note" id="edit-button" localid="b72d1571-75ed-4d2a-bc83-f4afec30344d">
+                <span class="material-symbols-outlined" style="font-size:20px">
+                    edit_note
+                </span>  
+              </div>
+
+              <div class="card-delete" id="delete-button" localid="b72d1571-75ed-4d2a-bc83-f4afec30344d">
+                <span class="material-symbols-outlined" style="font-size:18px">
+                    delete 
+                </span>  
+              </div>
+          </div>
+    
+          <div class="note" id="edit-button" accountid="undefined" localid="583c1f74-6dbd-4968-b3a7-e69b25fa958e" cardid="583c1f74-6dbd-4968-b3a7-e69b25fa958e">
+              <h4 class="note-title">Coinbase</h4>
+              <h5 class="note-subtitle">04/03/2024</h5>  
+
+              <div class="card-edit_note" id="edit-button" localid="583c1f74-6dbd-4968-b3a7-e69b25fa958e">
+                <span class="material-symbols-outlined" style="font-size:20px">
+                    edit_note
+                </span>  
+              </div>
+
+              <div class="card-delete" id="delete-button" localid="583c1f74-6dbd-4968-b3a7-e69b25fa958e">
+                <span class="material-symbols-outlined" style="font-size:18px">
+                    delete 
+                </span>  
+              </div>
+          </div>
+    
+          <div class="note" id="edit-button" accountid="undefined" localid="24026c64-22b1-4ee0-83d1-a3289fe358f1" cardid="24026c64-22b1-4ee0-83d1-a3289fe358f1">
+              <h4 class="note-title">esign </h4>
+              <h5 class="note-subtitle">03/14/2024</h5>  
+
+              <div class="card-edit_note" id="edit-button" localid="24026c64-22b1-4ee0-83d1-a3289fe358f1">
+                <span class="material-symbols-outlined" style="font-size:20px">
+                    edit_note
+                </span>  
+              </div>
+
+              <div class="card-delete" id="delete-button" localid="24026c64-22b1-4ee0-83d1-a3289fe358f1">
+                <span class="material-symbols-outlined" style="font-size:18px">
+                    delete 
+                </span>  
+              </div>
+          </div>
+    
+          <div class="note" id="edit-button" accountid="undefined" localid="f475e006-9ff6-44c0-9c87-e4e737922b4c" cardid="f475e006-9ff6-44c0-9c87-e4e737922b4c">
+              <h4 class="note-title">: vault orphan system seat satisfy orphan luggage body novel rotate turn already</h4>
+              <h5 class="note-subtitle">03/14/2024</h5>  
+
+              <div class="card-edit_note" id="edit-button" localid="f475e006-9ff6-44c0-9c87-e4e737922b4c">
+                <span class="material-symbols-outlined" style="font-size:20px">
+                    edit_note
+                </span>  
+              </div>
+
+              <div class="card-delete" id="delete-button" localid="f475e006-9ff6-44c0-9c87-e4e737922b4c">
+                <span class="material-symbols-outlined" style="font-size:18px">
+                    delete 
+                </span>  
+              </div>
+          </div>
+    
+          <div class="note" id="edit-button" accountid="undefined" localid="b5730669-afb0-4e41-9083-d88996e55853" cardid="b5730669-afb0-4e41-9083-d88996e55853">
+              <h4 class="note-title"> </h4>
+              <h5 class="note-subtitle">03/13/2024</h5>  
+
+              <div class="card-edit_note" id="edit-button" localid="b5730669-afb0-4e41-9083-d88996e55853">
+                <span class="material-symbols-outlined" style="font-size:20px">
+                    edit_note
+                </span>  
+              </div>
+
+              <div class="card-delete" id="delete-button" localid="b5730669-afb0-4e41-9083-d88996e55853">
+                <span class="material-symbols-outlined" style="font-size:18px">
+                    delete 
+                </span>  
+              </div>
+          </div>
+    
+          <div class="note" id="edit-button" accountid="undefined" localid="4b4525fb-158b-45a7-806e-d301bcb549b0" cardid="4b4525fb-158b-45a7-806e-d301bcb549b0">
+              <h4 class="note-title">bump</h4>
+              <h5 class="note-subtitle">03/13/2024</h5>  
+
+              <div class="card-edit_note" id="edit-button" localid="4b4525fb-158b-45a7-806e-d301bcb549b0">
+                <span class="material-symbols-outlined" style="font-size:20px">
+                    edit_note
+                </span>  
+              </div>
+
+              <div class="card-delete" id="delete-button" localid="4b4525fb-158b-45a7-806e-d301bcb549b0">
+                <span class="material-symbols-outlined" style="font-size:18px">
+                    delete 
+                </span>  
+              </div>
+          </div>
+    
+          <div class="note" id="edit-button" accountid="undefined" localid="71533073-cdf9-49a3-ba21-294f94db091c" cardid="71533073-cdf9-49a3-ba21-294f94db091c">
+              <h4 class="note-title">wallet </h4>
+              <h5 class="note-subtitle">03/13/2024</h5>  
+
+              <div class="card-edit_note" id="edit-button" localid="71533073-cdf9-49a3-ba21-294f94db091c">
+                <span class="material-symbols-outlined" style="font-size:20px">
+                    edit_note
+                </span>  
+              </div>
+
+              <div class="card-delete" id="delete-button" localid="71533073-cdf9-49a3-ba21-294f94db091c">
+                <span class="material-symbols-outlined" style="font-size:18px">
+                    delete 
+                </span>  
+              </div>
+          </div>
+    
+          <div class="note" id="edit-button" accountid="undefined" localid="89ee5350-989f-4a4b-922d-5073bb702767" cardid="89ee5350-989f-4a4b-922d-5073bb702767">
+              <h4 class="note-title">lock Chain 101</h4>
+              <h5 class="note-subtitle">03/10/2024</h5>  
+
+              <div class="card-edit_note" id="edit-button" localid="89ee5350-989f-4a4b-922d-5073bb702767">
+                <span class="material-symbols-outlined" style="font-size:20px">
+                    edit_note
+                </span>  
+              </div>
+
+              <div class="card-delete" id="delete-button" localid="89ee5350-989f-4a4b-922d-5073bb702767">
+                <span class="material-symbols-outlined" style="font-size:18px">
+                    delete 
+                </span>  
+              </div>
+          </div>
+    
+          <div class="note" id="edit-button" accountid="undefined" localid="b6c18a8a-b3a4-473d-a1ac-459b3ec71035" cardid="b6c18a8a-b3a4-473d-a1ac-459b3ec71035">
+              <h4 class="note-title">m a </h4>
+              <h5 class="note-subtitle">03/09/2024</h5>  
+
+              <div class="card-edit_note" id="edit-button" localid="b6c18a8a-b3a4-473d-a1ac-459b3ec71035">
+                <span class="material-symbols-outlined" style="font-size:20px">
+                    edit_note
+                </span>  
+              </div>
+
+              <div class="card-delete" id="delete-button" localid="b6c18a8a-b3a4-473d-a1ac-459b3ec71035">
+                <span class="material-symbols-outlined" style="font-size:18px">
+                    delete 
+                </span>  
+              </div>
+          </div>
+    
+          <div class="note" id="edit-button" accountid="undefined" localid="d8315474-96d3-4993-a7e4-97320de7b31c" cardid="d8315474-96d3-4993-a7e4-97320de7b31c">
+              <h4 class="note-title">Matt Sync NM</h4>
+              <h5 class="note-subtitle">03/08/2024</h5>  
+
+              <div class="card-edit_note" id="edit-button" localid="d8315474-96d3-4993-a7e4-97320de7b31c">
+                <span class="material-symbols-outlined" style="font-size:20px">
+                    edit_note
+                </span>  
+              </div>
+
+              <div class="card-delete" id="delete-button" localid="d8315474-96d3-4993-a7e4-97320de7b31c">
+                <span class="material-symbols-outlined" style="font-size:18px">
+                    delete 
+                </span>  
+              </div>
+          </div>
+    
+          <div class="note" id="edit-button" accountid="undefined" localid="9ad1f377-3e8d-4060-940b-f9bd6727f8b5" cardid="9ad1f377-3e8d-4060-940b-f9bd6727f8b5">
+              <h4 class="note-title">Untitled</h4>
+              <h5 class="note-subtitle">03/07/2024</h5>  
+
+              <div class="card-edit_note" id="edit-button" localid="9ad1f377-3e8d-4060-940b-f9bd6727f8b5">
+                <span class="material-symbols-outlined" style="font-size:20px">
+                    edit_note
+                </span>  
+              </div>
+
+              <div class="card-delete" id="delete-button" localid="9ad1f377-3e8d-4060-940b-f9bd6727f8b5">
+                <span class="material-symbols-outlined" style="font-size:18px">
+                    delete 
+                </span>  
+              </div>
+          </div>
+    
+          <div class="note" id="edit-button" accountid="undefined" localid="12cb674c-e189-4eee-9399-4a4635d55d9d" cardid="12cb674c-e189-4eee-9399-4a4635d55d9d">
+              <h4 class="note-title">securities coach</h4>
+              <h5 class="note-subtitle">03/06/2024</h5>  
+
+              <div class="card-edit_note" id="edit-button" localid="12cb674c-e189-4eee-9399-4a4635d55d9d">
+                <span class="material-symbols-outlined" style="font-size:20px">
+                    edit_note
+                </span>  
+              </div>
+
+              <div class="card-delete" id="delete-button" localid="12cb674c-e189-4eee-9399-4a4635d55d9d">
+                <span class="material-symbols-outlined" style="font-size:18px">
+                    delete 
+                </span>  
+              </div>
+          </div>
+    
+          <div class="note" id="edit-button" accountid="undefined" localid="1a753549-003e-445e-9388-ba7d9894616e" cardid="1a753549-003e-445e-9388-ba7d9894616e">
+              <h4 class="note-title">sysy</h4>
+              <h5 class="note-subtitle">03/05/2024</h5>  
+
+              <div class="card-edit_note" id="edit-button" localid="1a753549-003e-445e-9388-ba7d9894616e">
+                <span class="material-symbols-outlined" style="font-size:20px">
+                    edit_note
+                </span>  
+              </div>
+
+              <div class="card-delete" id="delete-button" localid="1a753549-003e-445e-9388-ba7d9894616e">
+                <span class="material-symbols-outlined" style="font-size:18px">
+                    delete 
+                </span>  
+              </div>
+          </div>
+    
+          <div class="note" id="edit-button" accountid="undefined" localid="a785c321-a14a-408d-9a62-987e625d2db7" cardid="a785c321-a14a-408d-9a62-987e625d2db7">
+              <h4 class="note-title">gu</h4>
+              <h5 class="note-subtitle">03/05/2024</h5>  
+
+              <div class="card-edit_note" id="edit-button" localid="a785c321-a14a-408d-9a62-987e625d2db7">
+                <span class="material-symbols-outlined" style="font-size:20px">
+                    edit_note
+                </span>  
+              </div>
+
+              <div class="card-delete" id="delete-button" localid="a785c321-a14a-408d-9a62-987e625d2db7">
+                <span class="material-symbols-outlined" style="font-size:18px">
+                    delete 
+                </span>  
+              </div>
+          </div>
+    
+          <div class="note" id="edit-button" accountid="undefined" localid="e16421b6-1c34-4149-9408-f42cf0026f0f" cardid="e16421b6-1c34-4149-9408-f42cf0026f0f">
+              <h4 class="note-title">tell me about the SEI blockchain in 3 paragraphs</h4>
+              <h5 class="note-subtitle">03/04/2024</h5>  
+
+              <div class="card-edit_note" id="edit-button" localid="e16421b6-1c34-4149-9408-f42cf0026f0f">
+                <span class="material-symbols-outlined" style="font-size:20px">
+                    edit_note
+                </span>  
+              </div>
+
+              <div class="card-delete" id="delete-button" localid="e16421b6-1c34-4149-9408-f42cf0026f0f">
+                <span class="material-symbols-outlined" style="font-size:18px">
+                    delete 
+                </span>  
+              </div>
+          </div>
+    
+          <div class="note" id="edit-button" accountid="undefined" localid="94796ca9-0aa2-4968-bdca-d747d217f25c" cardid="94796ca9-0aa2-4968-bdca-d747d217f25c">
+              <h4 class="note-title">PRE</h4>
+              <h5 class="note-subtitle">03/04/2024</h5>  
+
+              <div class="card-edit_note" id="edit-button" localid="94796ca9-0aa2-4968-bdca-d747d217f25c">
+                <span class="material-symbols-outlined" style="font-size:20px">
+                    edit_note
+                </span>  
+              </div>
+
+              <div class="card-delete" id="delete-button" localid="94796ca9-0aa2-4968-bdca-d747d217f25c">
+                <span class="material-symbols-outlined" style="font-size:18px">
+                    delete 
+                </span>  
+              </div>
+          </div>
+    
+          <div class="note" id="edit-button" accountid="undefined" localid="9694af82-c812-4d62-ac5c-f587dfdf7b9a" cardid="9694af82-c812-4d62-ac5c-f587dfdf7b9a">
+              <h4 class="note-title">Untitled</h4>
+              <h5 class="note-subtitle">03/04/2024</h5>  
+
+              <div class="card-edit_note" id="edit-button" localid="9694af82-c812-4d62-ac5c-f587dfdf7b9a">
+                <span class="material-symbols-outlined" style="font-size:20px">
+                    edit_note
+                </span>  
+              </div>
+
+              <div class="card-delete" id="delete-button" localid="9694af82-c812-4d62-ac5c-f587dfdf7b9a">
+                <span class="material-symbols-outlined" style="font-size:18px">
+                    delete 
+                </span>  
+              </div>
+          </div>
+    
+          <div class="note" id="edit-button" accountid="undefined" localid="67896c35-f7c0-4c67-abb7-f154b06a36c1" cardid="67896c35-f7c0-4c67-abb7-f154b06a36c1">
+              <h4 class="note-title"> </h4>
+              <h5 class="note-subtitle">03/04/2024</h5>  
+
+              <div class="card-edit_note" id="edit-button" localid="67896c35-f7c0-4c67-abb7-f154b06a36c1">
+                <span class="material-symbols-outlined" style="font-size:20px">
+                    edit_note
+                </span>  
+              </div>
+
+              <div class="card-delete" id="delete-button" localid="67896c35-f7c0-4c67-abb7-f154b06a36c1">
+                <span class="material-symbols-outlined" style="font-size:18px">
+                    delete 
+                </span>  
+              </div>
+          </div>
+    
+          <div class="note" id="edit-button" accountid="null" localid="62351c09-04e8-46c0-b66b-5065b5624ee0" cardid="62351c09-04e8-46c0-b66b-5065b5624ee0">
+              <h4 class="note-title">To Do March 4th</h4>
+              <h5 class="note-subtitle">03/04/2024</h5>  
+
+              <div class="card-edit_note" id="edit-button" localid="62351c09-04e8-46c0-b66b-5065b5624ee0">
+                <span class="material-symbols-outlined" style="font-size:20px">
+                    edit_note
+                </span>  
+              </div>
+
+              <div class="card-delete" id="delete-button" localid="62351c09-04e8-46c0-b66b-5065b5624ee0">
+                <span class="material-symbols-outlined" style="font-size:18px">
+                    delete 
+                </span>  
+              </div>
+          </div>
+    
+          <div class="note" id="edit-button" accountid="null" localid="2bfd4d2c-abb7-4df9-be93-4e4eb6385f81" cardid="2bfd4d2c-abb7-4df9-be93-4e4eb6385f81">
+              <h4 class="note-title">Artists Next Steps</h4>
+              <h5 class="note-subtitle">03/03/2024</h5>  
+
+              <div class="card-edit_note" id="edit-button" localid="2bfd4d2c-abb7-4df9-be93-4e4eb6385f81">
+                <span class="material-symbols-outlined" style="font-size:20px">
+                    edit_note
+                </span>  
+              </div>
+
+              <div class="card-delete" id="delete-button" localid="2bfd4d2c-abb7-4df9-be93-4e4eb6385f81">
+                <span class="material-symbols-outlined" style="font-size:18px">
+                    delete 
+                </span>  
+              </div>
+          </div>
+    
+          <div class="note" id="edit-button" accountid="undefined" localid="404b46f4-1ebe-44cc-a973-7ea5a6c41747" cardid="404b46f4-1ebe-44cc-a973-7ea5a6c41747">
+              <h4 class="note-title">zelda</h4>
+              <h5 class="note-subtitle">03/01/2024</h5>  
+
+              <div class="card-edit_note" id="edit-button" localid="404b46f4-1ebe-44cc-a973-7ea5a6c41747">
+                <span class="material-symbols-outlined" style="font-size:20px">
+                    edit_note
+                </span>  
+              </div>
+
+              <div class="card-delete" id="delete-button" localid="404b46f4-1ebe-44cc-a973-7ea5a6c41747">
+                <span class="material-symbols-outlined" style="font-size:18px">
+                    delete 
+                </span>  
+              </div>
+          </div>
+    
+          <div class="note" id="edit-button" accountid="null" localid="263eb333-4516-42ce-a327-d07c42269bdd" cardid="263eb333-4516-42ce-a327-d07c42269bdd">
+              <h4 class="note-title">Untitled</h4>
+              <h5 class="note-subtitle">03/01/2024</h5>  
+
+              <div class="card-edit_note" id="edit-button" localid="263eb333-4516-42ce-a327-d07c42269bdd">
+                <span class="material-symbols-outlined" style="font-size:20px">
+                    edit_note
+                </span>  
+              </div>
+
+              <div class="card-delete" id="delete-button" localid="263eb333-4516-42ce-a327-d07c42269bdd">
+                <span class="material-symbols-outlined" style="font-size:18px">
+                    delete 
+                </span>  
+              </div>
+          </div>
+    
+          <div class="note" id="edit-button" accountid="undefined" localid="895415ba-3aa6-40f6-ab76-b300f98c7683" cardid="895415ba-3aa6-40f6-ab76-b300f98c7683">
+              <h4 class="note-title">prompt </h4>
+              <h5 class="note-subtitle">02/29/2024</h5>  
+
+              <div class="card-edit_note" id="edit-button" localid="895415ba-3aa6-40f6-ab76-b300f98c7683">
+                <span class="material-symbols-outlined" style="font-size:20px">
+                    edit_note
+                </span>  
+              </div>
+
+              <div class="card-delete" id="delete-button" localid="895415ba-3aa6-40f6-ab76-b300f98c7683">
+                <span class="material-symbols-outlined" style="font-size:18px">
+                    delete 
+                </span>  
+              </div>
+          </div>
+    
+          <div class="note" id="edit-button" accountid="undefined" localid="1c12435f-2c1d-4054-ba36-8610cf770c3e" cardid="1c12435f-2c1d-4054-ba36-8610cf770c3e">
+              <h4 class="note-title">Prompt generator</h4>
+              <h5 class="note-subtitle">02/29/2024</h5>  
+
+              <div class="card-edit_note" id="edit-button" localid="1c12435f-2c1d-4054-ba36-8610cf770c3e">
+                <span class="material-symbols-outlined" style="font-size:20px">
+                    edit_note
+                </span>  
+              </div>
+
+              <div class="card-delete" id="delete-button" localid="1c12435f-2c1d-4054-ba36-8610cf770c3e">
+                <span class="material-symbols-outlined" style="font-size:18px">
+                    delete 
+                </span>  
+              </div>
+          </div>
+    
+          <div class="note" id="edit-button" accountid="undefined" localid="53af906b-6878-425e-a1f3-4940f3e9ebd3" cardid="53af906b-6878-425e-a1f3-4940f3e9ebd3">
+              <h4 class="note-title">NM SYNC W</h4>
+              <h5 class="note-subtitle">02/27/2024</h5>  
+
+              <div class="card-edit_note" id="edit-button" localid="53af906b-6878-425e-a1f3-4940f3e9ebd3">
+                <span class="material-symbols-outlined" style="font-size:20px">
+                    edit_note
+                </span>  
+              </div>
+
+              <div class="card-delete" id="delete-button" localid="53af906b-6878-425e-a1f3-4940f3e9ebd3">
+                <span class="material-symbols-outlined" style="font-size:18px">
+                    delete 
+                </span>  
+              </div>
+          </div>
+    
+          <div class="note" id="edit-button" accountid="undefined" localid="fbf3c847-af02-4f14-8eb1-08f2ea6104e3" cardid="fbf3c847-af02-4f14-8eb1-08f2ea6104e3">
+              <h4 class="note-title">godaddy.</h4>
+              <h5 class="note-subtitle">02/27/2024</h5>  
+
+              <div class="card-edit_note" id="edit-button" localid="fbf3c847-af02-4f14-8eb1-08f2ea6104e3">
+                <span class="material-symbols-outlined" style="font-size:20px">
+                    edit_note
+                </span>  
+              </div>
+
+              <div class="card-delete" id="delete-button" localid="fbf3c847-af02-4f14-8eb1-08f2ea6104e3">
+                <span class="material-symbols-outlined" style="font-size:18px">
+                    delete 
+                </span>  
+              </div>
+          </div>
+    
+          <div class="note" id="edit-button" accountid="undefined" localid="cfd840fa-827d-45ec-9ff3-6646b4faf92a" cardid="cfd840fa-827d-45ec-9ff3-6646b4faf92a">
+              <h4 class="note-title">p</h4>
+              <h5 class="note-subtitle">02/27/2024</h5>  
+
+              <div class="card-edit_note" id="edit-button" localid="cfd840fa-827d-45ec-9ff3-6646b4faf92a">
+                <span class="material-symbols-outlined" style="font-size:20px">
+                    edit_note
+                </span>  
+              </div>
+
+              <div class="card-delete" id="delete-button" localid="cfd840fa-827d-45ec-9ff3-6646b4faf92a">
+                <span class="material-symbols-outlined" style="font-size:18px">
+                    delete 
+                </span>  
+              </div>
+          </div>
+    
+          <div class="note" id="edit-button" accountid="undefined" localid="bd20438d-aab3-44f0-a8b3-4114a4e80aed" cardid="bd20438d-aab3-44f0-a8b3-4114a4e80aed">
+              <h4 class="note-title">ss bar gsap</h4>
+              <h5 class="note-subtitle">02/26/2024</h5>  
+
+              <div class="card-edit_note" id="edit-button" localid="bd20438d-aab3-44f0-a8b3-4114a4e80aed">
+                <span class="material-symbols-outlined" style="font-size:20px">
+                    edit_note
+                </span>  
+              </div>
+
+              <div class="card-delete" id="delete-button" localid="bd20438d-aab3-44f0-a8b3-4114a4e80aed">
+                <span class="material-symbols-outlined" style="font-size:18px">
+                    delete 
+                </span>  
+              </div>
+          </div>
+    
+          <div class="note" id="edit-button" accountid="undefined" localid="2b5f695f-be11-4385-b2e1-8d27d68ed6cd" cardid="2b5f695f-be11-4385-b2e1-8d27d68ed6cd">
+              <h4 class="note-title">Tes</h4>
+              <h5 class="note-subtitle">02/26/2024</h5>  
+
+              <div class="card-edit_note" id="edit-button" localid="2b5f695f-be11-4385-b2e1-8d27d68ed6cd">
+                <span class="material-symbols-outlined" style="font-size:20px">
+                    edit_note
+                </span>  
+              </div>
+
+              <div class="card-delete" id="delete-button" localid="2b5f695f-be11-4385-b2e1-8d27d68ed6cd">
+                <span class="material-symbols-outlined" style="font-size:18px">
+                    delete 
+                </span>  
+              </div>
+          </div>
+    
+          <div class="note" id="edit-button" accountid="undefined" localid="9e795704-92bc-446e-9e25-07fa1a10929a" cardid="9e795704-92bc-446e-9e25-07fa1a10929a">
+              <h4 class="note-title">ies champ</h4>
+              <h5 class="note-subtitle">02/26/2024</h5>  
+
+              <div class="card-edit_note" id="edit-button" localid="9e795704-92bc-446e-9e25-07fa1a10929a">
+                <span class="material-symbols-outlined" style="font-size:20px">
+                    edit_note
+                </span>  
+              </div>
+
+              <div class="card-delete" id="delete-button" localid="9e795704-92bc-446e-9e25-07fa1a10929a">
+                <span class="material-symbols-outlined" style="font-size:18px">
+                    delete 
+                </span>  
+              </div>
+          </div>
+    
+          <div class="note" id="edit-button" accountid="undefined" localid="1140ecb3-45ad-438b-94aa-52b8a8cc2b35" cardid="1140ecb3-45ad-438b-94aa-52b8a8cc2b35">
+              <h4 class="note-title">.</h4>
+              <h5 class="note-subtitle">02/25/2024</h5>  
+
+              <div class="card-edit_note" id="edit-button" localid="1140ecb3-45ad-438b-94aa-52b8a8cc2b35">
+                <span class="material-symbols-outlined" style="font-size:20px">
+                    edit_note
+                </span>  
+              </div>
+
+              <div class="card-delete" id="delete-button" localid="1140ecb3-45ad-438b-94aa-52b8a8cc2b35">
+                <span class="material-symbols-outlined" style="font-size:18px">
+                    delete 
+                </span>  
+              </div>
+          </div>
+    
+          <div class="note" id="edit-button" accountid="undefined" localid="6b4a88b6-df3a-45c3-8551-d9310f743888" cardid="6b4a88b6-df3a-45c3-8551-d9310f743888">
+              <h4 class="note-title">_2252</h4>
+              <h5 class="note-subtitle">02/25/2024</h5>  
+
+              <div class="card-edit_note" id="edit-button" localid="6b4a88b6-df3a-45c3-8551-d9310f743888">
+                <span class="material-symbols-outlined" style="font-size:20px">
+                    edit_note
+                </span>  
+              </div>
+
+              <div class="card-delete" id="delete-button" localid="6b4a88b6-df3a-45c3-8551-d9310f743888">
+                <span class="material-symbols-outlined" style="font-size:18px">
+                    delete 
+                </span>  
+              </div>
+          </div>
+    
+          <div class="note" id="edit-button" accountid="undefined" localid="4382925d-3b20-4d0b-a632-25f50841ff6e" cardid="4382925d-3b20-4d0b-a632-25f50841ff6e">
+              <h4 class="note-title">activi</h4>
+              <h5 class="note-subtitle">02/25/2024</h5>  
+
+              <div class="card-edit_note" id="edit-button" localid="4382925d-3b20-4d0b-a632-25f50841ff6e">
+                <span class="material-symbols-outlined" style="font-size:20px">
+                    edit_note
+                </span>  
+              </div>
+
+              <div class="card-delete" id="delete-button" localid="4382925d-3b20-4d0b-a632-25f50841ff6e">
+                <span class="material-symbols-outlined" style="font-size:18px">
+                    delete 
+                </span>  
+              </div>
+          </div>
+    
+          <div class="note" id="edit-button" accountid="undefined" localid="69cde9b3-1d8e-451b-ad89-eb24b618eabf" cardid="69cde9b3-1d8e-451b-ad89-eb24b618eabf">
+              <h4 class="note-title">3.5</h4>
+              <h5 class="note-subtitle">02/24/2024</h5>  
+
+              <div class="card-edit_note" id="edit-button" localid="69cde9b3-1d8e-451b-ad89-eb24b618eabf">
+                <span class="material-symbols-outlined" style="font-size:20px">
+                    edit_note
+                </span>  
+              </div>
+
+              <div class="card-delete" id="delete-button" localid="69cde9b3-1d8e-451b-ad89-eb24b618eabf">
+                <span class="material-symbols-outlined" style="font-size:18px">
+                    delete 
+                </span>  
+              </div>
+          </div>
+    
+          <div class="note" id="edit-button" accountid="undefined" localid="b5fe0f63-7fbf-4a9a-bbee-7e5888bb9210" cardid="b5fe0f63-7fbf-4a9a-bbee-7e5888bb9210">
+              <h4 class="note-title">1.99</h4>
+              <h5 class="note-subtitle">02/24/2024</h5>  
+
+              <div class="card-edit_note" id="edit-button" localid="b5fe0f63-7fbf-4a9a-bbee-7e5888bb9210">
+                <span class="material-symbols-outlined" style="font-size:20px">
+                    edit_note
+                </span>  
+              </div>
+
+              <div class="card-delete" id="delete-button" localid="b5fe0f63-7fbf-4a9a-bbee-7e5888bb9210">
+                <span class="material-symbols-outlined" style="font-size:18px">
+                    delete 
+                </span>  
+              </div>
+          </div>
+    
+          <div class="note" id="edit-button" accountid="undefined" localid="53e4d224-1e7d-476a-8a89-47eb709fadff" cardid="53e4d224-1e7d-476a-8a89-47eb709fadff">
+              <h4 class="note-title">h</h4>
+              <h5 class="note-subtitle">02/23/2024</h5>  
+
+              <div class="card-edit_note" id="edit-button" localid="53e4d224-1e7d-476a-8a89-47eb709fadff">
+                <span class="material-symbols-outlined" style="font-size:20px">
+                    edit_note
+                </span>  
+              </div>
+
+              <div class="card-delete" id="delete-button" localid="53e4d224-1e7d-476a-8a89-47eb709fadff">
+                <span class="material-symbols-outlined" style="font-size:18px">
+                    delete 
+                </span>  
+              </div>
+          </div>
+    
+          <div class="note" id="edit-button" accountid="undefined" localid="1b89b00f-3116-48cb-9a70-690daf6192d5" cardid="1b89b00f-3116-48cb-9a70-690daf6192d5">
+              <h4 class="note-title"> t </h4>
+              <h5 class="note-subtitle">02/23/2024</h5>  
+
+              <div class="card-edit_note" id="edit-button" localid="1b89b00f-3116-48cb-9a70-690daf6192d5">
+                <span class="material-symbols-outlined" style="font-size:20px">
+                    edit_note
+                </span>  
+              </div>
+
+              <div class="card-delete" id="delete-button" localid="1b89b00f-3116-48cb-9a70-690daf6192d5">
+                <span class="material-symbols-outlined" style="font-size:18px">
+                    delete 
+                </span>  
+              </div>
+          </div>
+    
+          <div class="note" id="edit-button" accountid="undefined" localid="67f90931-e32a-43fb-86ca-57afcbb004c9" cardid="67f90931-e32a-43fb-86ca-57afcbb004c9">
+              <h4 class="note-title">hase</h4>
+              <h5 class="note-subtitle">02/23/2024</h5>  
+
+              <div class="card-edit_note" id="edit-button" localid="67f90931-e32a-43fb-86ca-57afcbb004c9">
+                <span class="material-symbols-outlined" style="font-size:20px">
+                    edit_note
+                </span>  
+              </div>
+
+              <div class="card-delete" id="delete-button" localid="67f90931-e32a-43fb-86ca-57afcbb004c9">
+                <span class="material-symbols-outlined" style="font-size:18px">
+                    delete 
+                </span>  
+              </div>
+          </div>
+    
+          <div class="note" id="edit-button" accountid="undefined" localid="0b585138-6268-4ffc-bf98-41f355d3dbd2" cardid="0b585138-6268-4ffc-bf98-41f355d3dbd2">
+              <h4 class="note-title"> w </h4>
+              <h5 class="note-subtitle">02/23/2024</h5>  
+
+              <div class="card-edit_note" id="edit-button" localid="0b585138-6268-4ffc-bf98-41f355d3dbd2">
+                <span class="material-symbols-outlined" style="font-size:20px">
+                    edit_note
+                </span>  
+              </div>
+
+              <div class="card-delete" id="delete-button" localid="0b585138-6268-4ffc-bf98-41f355d3dbd2">
+                <span class="material-symbols-outlined" style="font-size:18px">
+                    delete 
+                </span>  
+              </div>
+          </div>
+    
+          <div class="note" id="edit-button" accountid="undefined" localid="207d91c2-4d0f-4c87-96d4-36bb6fb91852" cardid="207d91c2-4d0f-4c87-96d4-36bb6fb91852">
+              <h4 class="note-title">Ebrenillab50@</h4>
+              <h5 class="note-subtitle">02/23/2024</h5>  
+
+              <div class="card-edit_note" id="edit-button" localid="207d91c2-4d0f-4c87-96d4-36bb6fb91852">
+                <span class="material-symbols-outlined" style="font-size:20px">
+                    edit_note
+                </span>  
+              </div>
+
+              <div class="card-delete" id="delete-button" localid="207d91c2-4d0f-4c87-96d4-36bb6fb91852">
+                <span class="material-symbols-outlined" style="font-size:18px">
+                    delete 
+                </span>  
+              </div>
+          </div>
+    
+          <div class="note" id="edit-button" accountid="undefined" localid="cd224c62-c669-436d-8e4a-8a0f73bf9738" cardid="cd224c62-c669-436d-8e4a-8a0f73bf9738">
+              <h4 class="note-title">o</h4>
+              <h5 class="note-subtitle">02/23/2024</h5>  
+
+              <div class="card-edit_note" id="edit-button" localid="cd224c62-c669-436d-8e4a-8a0f73bf9738">
+                <span class="material-symbols-outlined" style="font-size:20px">
+                    edit_note
+                </span>  
+              </div>
+
+              <div class="card-delete" id="delete-button" localid="cd224c62-c669-436d-8e4a-8a0f73bf9738">
+                <span class="material-symbols-outlined" style="font-size:18px">
+                    delete 
+                </span>  
+              </div>
+          </div>
+    
+          <div class="note" id="edit-button" accountid="undefined" localid="44313e28-546a-40a2-a9cf-9c1509b4c0ce" cardid="44313e28-546a-40a2-a9cf-9c1509b4c0ce">
+              <h4 class="note-title">ecurities Sync</h4>
+              <h5 class="note-subtitle">02/23/2024</h5>  
+
+              <div class="card-edit_note" id="edit-button" localid="44313e28-546a-40a2-a9cf-9c1509b4c0ce">
+                <span class="material-symbols-outlined" style="font-size:20px">
+                    edit_note
+                </span>  
+              </div>
+
+              <div class="card-delete" id="delete-button" localid="44313e28-546a-40a2-a9cf-9c1509b4c0ce">
+                <span class="material-symbols-outlined" style="font-size:18px">
+                    delete 
+                </span>  
+              </div>
+          </div>
+    
+          <div class="note" id="edit-button" accountid="undefined" localid="06808d8f-be64-4bf0-952c-5bd020262761" cardid="06808d8f-be64-4bf0-952c-5bd020262761">
+              <h4 class="note-title">FE Sync</h4>
+              <h5 class="note-subtitle">02/23/2024</h5>  
+
+              <div class="card-edit_note" id="edit-button" localid="06808d8f-be64-4bf0-952c-5bd020262761">
+                <span class="material-symbols-outlined" style="font-size:20px">
+                    edit_note
+                </span>  
+              </div>
+
+              <div class="card-delete" id="delete-button" localid="06808d8f-be64-4bf0-952c-5bd020262761">
+                <span class="material-symbols-outlined" style="font-size:18px">
+                    delete 
+                </span>  
+              </div>
+          </div>
+    
+          <div class="note" id="edit-button" accountid="null" localid="447e0b35-d120-4f47-a607-64c887c61038" cardid="447e0b35-d120-4f47-a607-64c887c61038">
+              <h4 class="note-title">NM Build Strategy</h4>
+              <h5 class="note-subtitle">02/23/2024</h5>  
+
+              <div class="card-edit_note" id="edit-button" localid="447e0b35-d120-4f47-a607-64c887c61038">
+                <span class="material-symbols-outlined" style="font-size:20px">
+                    edit_note
+                </span>  
+              </div>
+
+              <div class="card-delete" id="delete-button" localid="447e0b35-d120-4f47-a607-64c887c61038">
+                <span class="material-symbols-outlined" style="font-size:18px">
+                    delete 
+                </span>  
+              </div>
+          </div>
+    
+          <div class="note" id="edit-button" accountid="undefined" localid="3d55abd7-aeb7-451c-9b66-21522820f288" cardid="3d55abd7-aeb7-451c-9b66-21522820f288">
+              <h4 class="note-title">RADDEK HELP</h4>
+              <h5 class="note-subtitle">02/22/2024</h5>  
+
+              <div class="card-edit_note" id="edit-button" localid="3d55abd7-aeb7-451c-9b66-21522820f288">
+                <span class="material-symbols-outlined" style="font-size:20px">
+                    edit_note
+                </span>  
+              </div>
+
+              <div class="card-delete" id="delete-button" localid="3d55abd7-aeb7-451c-9b66-21522820f288">
+                <span class="material-symbols-outlined" style="font-size:18px">
+                    delete 
+                </span>  
+              </div>
+          </div>
+    
+          <div class="note" id="edit-button" accountid="undefined" localid="3c7806de-fb28-4a9d-a986-b037de348612" cardid="3c7806de-fb28-4a9d-a986-b037de348612">
+              <h4 class="note-title">0</h4>
+              <h5 class="note-subtitle">02/22/2024</h5>  
+
+              <div class="card-edit_note" id="edit-button" localid="3c7806de-fb28-4a9d-a986-b037de348612">
+                <span class="material-symbols-outlined" style="font-size:20px">
+                    edit_note
+                </span>  
+              </div>
+
+              <div class="card-delete" id="delete-button" localid="3c7806de-fb28-4a9d-a986-b037de348612">
+                <span class="material-symbols-outlined" style="font-size:18px">
+                    delete 
+                </span>  
+              </div>
+          </div>
+    
+          <div class="note" id="edit-button" accountid="undefined" localid="19e72d1f-66a6-4545-851c-1b7421ed8c79" cardid="19e72d1f-66a6-4545-851c-1b7421ed8c79">
+              <h4 class="note-title">30x130</h4>
+              <h5 class="note-subtitle">02/22/2024</h5>  
+
+              <div class="card-edit_note" id="edit-button" localid="19e72d1f-66a6-4545-851c-1b7421ed8c79">
+                <span class="material-symbols-outlined" style="font-size:20px">
+                    edit_note
+                </span>  
+              </div>
+
+              <div class="card-delete" id="delete-button" localid="19e72d1f-66a6-4545-851c-1b7421ed8c79">
+                <span class="material-symbols-outlined" style="font-size:18px">
+                    delete 
+                </span>  
+              </div>
+          </div>
+    
+          <div class="note" id="edit-button" accountid="undefined" localid="9efbecfb-678e-4255-98e9-fc27b336941f" cardid="9efbecfb-678e-4255-98e9-fc27b336941f">
+              <h4 class="note-title">moon launch</h4>
+              <h5 class="note-subtitle">02/22/2024</h5>  
+
+              <div class="card-edit_note" id="edit-button" localid="9efbecfb-678e-4255-98e9-fc27b336941f">
+                <span class="material-symbols-outlined" style="font-size:20px">
+                    edit_note
+                </span>  
+              </div>
+
+              <div class="card-delete" id="delete-button" localid="9efbecfb-678e-4255-98e9-fc27b336941f">
+                <span class="material-symbols-outlined" style="font-size:18px">
+                    delete 
+                </span>  
+              </div>
+          </div>
+    
+          <div class="note" id="edit-button" accountid="null" localid="75cc3d95-1882-4a0e-b8f5-7091c0840584" cardid="75cc3d95-1882-4a0e-b8f5-7091c0840584">
+              <h4 class="note-title">INVOICES - Nut Market</h4>
+              <h5 class="note-subtitle">02/22/2024</h5>  
+
+              <div class="card-edit_note" id="edit-button" localid="75cc3d95-1882-4a0e-b8f5-7091c0840584">
+                <span class="material-symbols-outlined" style="font-size:20px">
+                    edit_note
+                </span>  
+              </div>
+
+              <div class="card-delete" id="delete-button" localid="75cc3d95-1882-4a0e-b8f5-7091c0840584">
+                <span class="material-symbols-outlined" style="font-size:18px">
+                    delete 
+                </span>  
+              </div>
+          </div>
+    
+    <div class="note justify-center align-center cursor-pointer user-none" id="add_notes_card">
+        <span class="material-symbols-outlined add_symbol">
+            add
+        </span>
+    </div>
+    </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Notes Sections -->
+  <div class="box" id="notes_box" style="z-index: 2; top: 598px; display: none;">
+    <div class="notes_box section">
+      <div class="display-flex flex-row justify-between align-center w-100" style="
+          height: 37px;
+          font-size: 18px;
+          /* width: 166px; */
+          /* color: #6a6c83; */
+          user-select: none;
+          font-weight: 700;
+        ">
+        <div class="fullScreenTitle ml-1"></div>
+        <span id="close_notes" class="material-symbols-rounded cursor-pointer">
+          close
+          </span>
+       
+        <!-- <span class="material-symbols-outlined" id="close_notes"> close </span> -->
+      </div>
+
+      <div id="note-typing-container" style="height: 100%" class="note-typing-container mt-2">
+        <div class="ql-toolbar ql-snow"><span class="ql-formats"><button type="button" class="ql-bold"><svg viewBox="0 0 18 18"> <path class="ql-stroke" d="M5,4H9.5A2.5,2.5,0,0,1,12,6.5v0A2.5,2.5,0,0,1,9.5,9H5A0,0,0,0,1,5,9V4A0,0,0,0,1,5,4Z"></path> <path class="ql-stroke" d="M5,9h5.5A2.5,2.5,0,0,1,13,11.5v0A2.5,2.5,0,0,1,10.5,14H5a0,0,0,0,1,0,0V9A0,0,0,0,1,5,9Z"></path> </svg></button><button type="button" class="ql-italic"><svg viewBox="0 0 18 18"> <line class="ql-stroke" x1="7" x2="13" y1="4" y2="4"></line> <line class="ql-stroke" x1="5" x2="11" y1="14" y2="14"></line> <line class="ql-stroke" x1="8" x2="10" y1="14" y2="4"></line> </svg></button><button type="button" class="ql-underline"><svg viewBox="0 0 18 18"> <path class="ql-stroke" d="M5,3V9a4.012,4.012,0,0,0,4,4H9a4.012,4.012,0,0,0,4-4V3"></path> <rect class="ql-fill" height="1" rx="0.5" ry="0.5" width="12" x="3" y="15"></rect> </svg></button></span><span class="ql-formats"><button type="button" class="ql-image"><svg viewBox="0 0 18 18"> <rect class="ql-stroke" height="10" width="12" x="3" y="4"></rect> <circle class="ql-fill" cx="6" cy="7" r="1"></circle> <polyline class="ql-even ql-fill" points="5 12 5 11 7 9 8 10 11 7 13 9 13 12 5 12"></polyline> </svg></button></span><span class="ql-formats"><button type="button" class="ql-list" value="bullet"><svg viewBox="0 0 18 18"> <line class="ql-stroke" x1="6" x2="15" y1="4" y2="4"></line> <line class="ql-stroke" x1="6" x2="15" y1="9" y2="9"></line> <line class="ql-stroke" x1="6" x2="15" y1="14" y2="14"></line> <line class="ql-stroke" x1="3" x2="3" y1="4" y2="4"></line> <line class="ql-stroke" x1="3" x2="3" y1="9" y2="9"></line> <line class="ql-stroke" x1="3" x2="3" y1="14" y2="14"></line> </svg></button><button type="button" class="ql-list" value="ordered"><svg viewBox="0 0 18 18"> <line class="ql-stroke" x1="7" x2="15" y1="4" y2="4"></line> <line class="ql-stroke" x1="7" x2="15" y1="9" y2="9"></line> <line class="ql-stroke" x1="7" x2="15" y1="14" y2="14"></line> <line class="ql-stroke ql-thin" x1="2.5" x2="4.5" y1="5.5" y2="5.5"></line> <path class="ql-fill" d="M3.5,6A0.5,0.5,0,0,1,3,5.5V3.085l-0.276.138A0.5,0.5,0,0,1,2.053,3c-0.124-.247-0.023-0.324.224-0.447l1-.5A0.5,0.5,0,0,1,4,2.5v3A0.5,0.5,0,0,1,3.5,6Z"></path> <path class="ql-stroke ql-thin" d="M4.5,10.5h-2c0-.234,1.85-1.076,1.85-2.234A0.959,0.959,0,0,0,2.5,8.156"></path> <path class="ql-stroke ql-thin" d="M2.5,14.846a0.959,0.959,0,0,0,1.85-.109A0.7,0.7,0,0,0,3.75,14a0.688,0.688,0,0,0,.6-0.736,0.959,0.959,0,0,0-1.85-.109"></path> </svg></button></span><span class="ql-formats" style="margin-left: 75px; margin-right: 0px; align-self: flex-end;"><div class="display-flex flex-row align-center ml-2">
+  
+                                <div id="toolbar_icon_copy_1" class="cursor-pointer select-none ml-2 ">
+                                  <span class="material-symbols-outlined copy"> content_copy </span>
+                                  </div>
+
+                                  <div id="toolbar_icon_delete_1" class="cursor-pointer select-none">
+                                  <span class="material-symbols-outlined trash"> delete </span>
+                                  </div>
+                            </div>
+                            </span></div><div><input type="text" class="note-typing-title" id="note-typing-title-1" value="untitled" edit-mode="no" placeholder="untitled"></div><div id="note-typing-description-screen" class="note-typing-description ql-container ql-snow" contenteditable="true" style="resize: none; position: relative;"><div class="ql-editor ql-blank" data-gramm="false" contenteditable="true"><p><br></p></div><div class="ql-clipboard" contenteditable="true" tabindex="-1"></div><div class="ql-tooltip ql-hidden"><a class="ql-preview" target="_blank" href="about:blank"></a><input type="text" data-formula="e=mc^2" data-link="https://quilljs.com" data-video="Embed URL"><a class="ql-action"></a><a class="ql-remove"></a></div></div>
+        <!-- Dropdown meetings list -->
+        <select id="meetings-list" class=""><option value="-1">select a meeting to create a note for</option>
+                      <option value="0" or="" create="" new="" note<="" option=""></option><option id="06808d8f-be64-4bf0-952c-5bd020262761-meeting-option" accountid="undefined" agenda="FE_Sync" localid="06808d8f-be64-4bf0-952c-5bd020262761" starttime="2024-02-23T18:59:32.564Z" value="06808d8f-be64-4bf0-952c-5bd020262761">
+                        FE Sync, 12:59
+                    </option><option id="0b585138-6268-4ffc-bf98-41f355d3dbd2-meeting-option" accountid="undefined" agenda="_w_" localid="0b585138-6268-4ffc-bf98-41f355d3dbd2" starttime="2024-02-23T21:50:47.276Z" value="0b585138-6268-4ffc-bf98-41f355d3dbd2">
+                         w , 15:50
+                    </option><option id="1140ecb3-45ad-438b-94aa-52b8a8cc2b35-meeting-option" accountid="undefined" agenda="." localid="1140ecb3-45ad-438b-94aa-52b8a8cc2b35" starttime="2024-02-26T05:01:01.242Z" value="1140ecb3-45ad-438b-94aa-52b8a8cc2b35">
+                        ., 23:01
+                    </option><option id="11f2f993-4e1e-42d9-bf94-d8a496884dab-meeting-option" accountid="undefined" agenda="65129" localid="11f2f993-4e1e-42d9-bf94-d8a496884dab" starttime="2024-04-15T13:55:51.305Z" value="11f2f993-4e1e-42d9-bf94-d8a496884dab">
+                        65129, 08:55
+                    </option><option id="12cb674c-e189-4eee-9399-4a4635d55d9d-meeting-option" accountid="undefined" agenda="securities_coach" localid="12cb674c-e189-4eee-9399-4a4635d55d9d" starttime="2024-03-06T14:03:33.771Z" value="12cb674c-e189-4eee-9399-4a4635d55d9d">
+                        securities coach, 08:03
+                    </option><option id="19e72d1f-66a6-4545-851c-1b7421ed8c79-meeting-option" accountid="undefined" agenda="30x130" localid="19e72d1f-66a6-4545-851c-1b7421ed8c79" starttime="2024-02-23T00:46:28.965Z" value="19e72d1f-66a6-4545-851c-1b7421ed8c79">
+                        30x130, 18:46
+                    </option><option id="1a753549-003e-445e-9388-ba7d9894616e-meeting-option" accountid="undefined" agenda="sysy" localid="1a753549-003e-445e-9388-ba7d9894616e" starttime="2024-03-06T00:28:30.967Z" value="1a753549-003e-445e-9388-ba7d9894616e">
+                        sysy, 18:28
+                    </option><option id="1b89b00f-3116-48cb-9a70-690daf6192d5-meeting-option" accountid="undefined" agenda="_t_" localid="1b89b00f-3116-48cb-9a70-690daf6192d5" starttime="2024-02-24T01:57:57.413Z" value="1b89b00f-3116-48cb-9a70-690daf6192d5">
+                         t , 19:57
+                    </option><option id="1c12435f-2c1d-4054-ba36-8610cf770c3e-meeting-option" accountid="undefined" agenda="Prompt_generator" localid="1c12435f-2c1d-4054-ba36-8610cf770c3e" starttime="2024-02-29T16:19:29.648Z" value="1c12435f-2c1d-4054-ba36-8610cf770c3e">
+                        Prompt generator, 10:19
+                    </option><option id="1f61a2ac-42ce-4126-9e66-f49053cd30bb-meeting-option" accountid="undefined" agenda="itie" localid="1f61a2ac-42ce-4126-9e66-f49053cd30bb" starttime="2024-04-10T14:19:33.522Z" value="1f61a2ac-42ce-4126-9e66-f49053cd30bb">
+                        itie, 09:19
+                    </option><option id="207d91c2-4d0f-4c87-96d4-36bb6fb91852-meeting-option" accountid="undefined" agenda="Ebrenillab50@" localid="207d91c2-4d0f-4c87-96d4-36bb6fb91852" starttime="2024-02-23T21:28:11.578Z" value="207d91c2-4d0f-4c87-96d4-36bb6fb91852">
+                        Ebrenillab50@, 15:28
+                    </option><option id="24026c64-22b1-4ee0-83d1-a3289fe358f1-meeting-option" accountid="undefined" agenda="esign_" localid="24026c64-22b1-4ee0-83d1-a3289fe358f1" starttime="2024-03-14T16:41:15.949Z" value="24026c64-22b1-4ee0-83d1-a3289fe358f1">
+                        esign , 11:41
+                    </option><option id="263eb333-4516-42ce-a327-d07c42269bdd-meeting-option" accountid="null" agenda="Untitled" localid="263eb333-4516-42ce-a327-d07c42269bdd" starttime="2024-03-01T18:17:44.791Z" value="263eb333-4516-42ce-a327-d07c42269bdd">
+                        Untitled, 12:17
+                    </option><option id="2b5f695f-be11-4385-b2e1-8d27d68ed6cd-meeting-option" accountid="undefined" agenda="Tes" localid="2b5f695f-be11-4385-b2e1-8d27d68ed6cd" starttime="2024-02-27T03:43:02.211Z" value="2b5f695f-be11-4385-b2e1-8d27d68ed6cd">
+                        Tes, 21:43
+                    </option><option id="2bfd4d2c-abb7-4df9-be93-4e4eb6385f81-meeting-option" accountid="null" agenda="Artists_Next_Steps" localid="2bfd4d2c-abb7-4df9-be93-4e4eb6385f81" starttime="2024-03-04T03:09:37.278Z" value="2bfd4d2c-abb7-4df9-be93-4e4eb6385f81">
+                        Artists Next Steps, 21:09
+                    </option><option id="2e33ad95-7a14-42a0-8fc6-f3ec18932941-meeting-option" accountid="undefined" agenda="ry" localid="2e33ad95-7a14-42a0-8fc6-f3ec18932941" starttime="2024-05-11T19:05:55.534Z" value="2e33ad95-7a14-42a0-8fc6-f3ec18932941">
+                        ry, 14:05
+                    </option><option id="334295be-7228-4572-a5dd-271bcf28f930-meeting-option" accountid="undefined" agenda="_just_checking_in_here,_hope_to_have_some_more_stuff_for_you_soon" localid="334295be-7228-4572-a5dd-271bcf28f930" starttime="2024-05-06T17:59:05.903Z" value="334295be-7228-4572-a5dd-271bcf28f930">
+                         just checking in here, hope to have some more stuff for you soon, 12:59
+                    </option><option id="35bf09c9-7af0-41a8-a4b8-54c29e0633b6-meeting-option" accountid="undefined" agenda="Viva_Acid" localid="35bf09c9-7af0-41a8-a4b8-54c29e0633b6" starttime="2024-04-17T15:20:19.841Z" value="35bf09c9-7af0-41a8-a4b8-54c29e0633b6">
+                        Viva Acid, 10:20
+                    </option><option id="3791d178-be23-406a-bed1-aac37337a1c1-meeting-option" accountid="undefined" agenda="ndpalettesocials@gmail.com" localid="3791d178-be23-406a-bed1-aac37337a1c1" starttime="2024-05-11T18:48:54.528Z" value="3791d178-be23-406a-bed1-aac37337a1c1">
+                        ndpalettesocials@gmail.com, 13:48
+                    </option><option id="39936234-122a-4125-9b6d-f5a93b5d5e64-meeting-option" accountid="undefined" agenda="C&amp;P_Sync" localid="39936234-122a-4125-9b6d-f5a93b5d5e64" starttime="2024-04-11T16:05:02.493Z" value="39936234-122a-4125-9b6d-f5a93b5d5e64">
+                        C&amp;P Sync, 11:05
+                    </option><option id="3c7806de-fb28-4a9d-a986-b037de348612-meeting-option" accountid="undefined" agenda="0" localid="3c7806de-fb28-4a9d-a986-b037de348612" starttime="2024-02-23T00:46:42.111Z" value="3c7806de-fb28-4a9d-a986-b037de348612">
+                        0, 18:46
+                    </option><option id="3c9a447f-2c69-4592-8669-158c0549d65c-meeting-option" accountid="undefined" agenda="bump" localid="3c9a447f-2c69-4592-8669-158c0549d65c" starttime="2024-04-22T14:56:42.027Z" value="3c9a447f-2c69-4592-8669-158c0549d65c">
+                        bump, 09:56
+                    </option><option id="3d55abd7-aeb7-451c-9b66-21522820f288-meeting-option" accountid="undefined" agenda="RADDEK_HELP" localid="3d55abd7-aeb7-451c-9b66-21522820f288" starttime="2024-02-23T01:09:32.754Z" value="3d55abd7-aeb7-451c-9b66-21522820f288">
+                        RADDEK HELP, 19:09
+                    </option><option id="404b46f4-1ebe-44cc-a973-7ea5a6c41747-meeting-option" accountid="undefined" agenda="zelda" localid="404b46f4-1ebe-44cc-a973-7ea5a6c41747" starttime="2024-03-02T04:34:47.642Z" value="404b46f4-1ebe-44cc-a973-7ea5a6c41747">
+                        zelda, 22:34
+                    </option><option id="4382925d-3b20-4d0b-a632-25f50841ff6e-meeting-option" accountid="undefined" agenda="activi" localid="4382925d-3b20-4d0b-a632-25f50841ff6e" starttime="2024-02-25T16:08:56.670Z" value="4382925d-3b20-4d0b-a632-25f50841ff6e">
+                        activi, 10:08
+                    </option><option id="44313e28-546a-40a2-a9cf-9c1509b4c0ce-meeting-option" accountid="undefined" agenda="ecurities_Sync" localid="44313e28-546a-40a2-a9cf-9c1509b4c0ce" starttime="2024-02-23T20:29:08.782Z" value="44313e28-546a-40a2-a9cf-9c1509b4c0ce">
+                        ecurities Sync, 14:29
+                    </option><option id="447e0b35-d120-4f47-a607-64c887c61038-meeting-option" accountid="null" agenda="NM_Build_Strategy" localid="447e0b35-d120-4f47-a607-64c887c61038" starttime="2024-02-23T18:59:22.246Z" value="447e0b35-d120-4f47-a607-64c887c61038">
+                        NM Build Strategy, 12:59
+                    </option><option id="475b5896-c413-465b-afee-bd6cb5b3bc6b-meeting-option" accountid="undefined" agenda="clickup" localid="475b5896-c413-465b-afee-bd6cb5b3bc6b" starttime="2024-04-07T18:51:11.281Z" value="475b5896-c413-465b-afee-bd6cb5b3bc6b">
+                        clickup, 13:51
+                    </option><option id="48996d75-70ab-43f1-b38f-24fd6d34affa-meeting-option" accountid="undefined" agenda="&amp;_P" localid="48996d75-70ab-43f1-b38f-24fd6d34affa" starttime="2024-04-14T15:45:15.336Z" value="48996d75-70ab-43f1-b38f-24fd6d34affa">
+                        &amp; P, 10:45
+                    </option><option id="4b4525fb-158b-45a7-806e-d301bcb549b0-meeting-option" accountid="undefined" agenda="bump" localid="4b4525fb-158b-45a7-806e-d301bcb549b0" starttime="2024-03-13T21:07:13.863Z" value="4b4525fb-158b-45a7-806e-d301bcb549b0">
+                        bump, 16:07
+                    </option><option id="50c70beb-69fc-413a-96f5-05b4034ab703-meeting-option" accountid="undefined" agenda="k" localid="50c70beb-69fc-413a-96f5-05b4034ab703" starttime="2024-05-19T17:33:10.403Z" value="50c70beb-69fc-413a-96f5-05b4034ab703">
+                        k, 12:33
+                    </option><option id="53af906b-6878-425e-a1f3-4940f3e9ebd3-meeting-option" accountid="undefined" agenda="NM_SYNC_W" localid="53af906b-6878-425e-a1f3-4940f3e9ebd3" starttime="2024-02-27T18:07:58.134Z" value="53af906b-6878-425e-a1f3-4940f3e9ebd3">
+                        NM SYNC W, 12:07
+                    </option><option id="53e4d224-1e7d-476a-8a89-47eb709fadff-meeting-option" accountid="undefined" agenda="h" localid="53e4d224-1e7d-476a-8a89-47eb709fadff" starttime="2024-02-24T02:09:04.470Z" value="53e4d224-1e7d-476a-8a89-47eb709fadff">
+                        h, 20:09
+                    </option><option id="583c1f74-6dbd-4968-b3a7-e69b25fa958e-meeting-option" accountid="undefined" agenda="Coinbase" localid="583c1f74-6dbd-4968-b3a7-e69b25fa958e" starttime="2024-04-03T14:42:03.510Z" value="583c1f74-6dbd-4968-b3a7-e69b25fa958e">
+                        Coinbase, 09:42
+                    </option><option id="62351c09-04e8-46c0-b66b-5065b5624ee0-meeting-option" accountid="null" agenda="To_Do_March_4th" localid="62351c09-04e8-46c0-b66b-5065b5624ee0" starttime="2024-03-04T15:14:53.780Z" value="62351c09-04e8-46c0-b66b-5065b5624ee0">
+                        To Do March 4th, 09:14
+                    </option><option id="63ef4427-02c5-4608-bee6-d1f212cbec29-meeting-option" accountid="undefined" agenda="a_quick_check_in" localid="63ef4427-02c5-4608-bee6-d1f212cbec29" starttime="2024-04-10T19:51:10.732Z" value="63ef4427-02c5-4608-bee6-d1f212cbec29">
+                        a quick check in, 14:51
+                    </option><option id="65d514b3-7a61-427d-8ada-bdd48ead9e27-meeting-option" accountid="undefined" agenda="Yo_Haseeb!_Really_want_you_to_come_" localid="65d514b3-7a61-427d-8ada-bdd48ead9e27" starttime="2024-04-14T15:38:10.503Z" value="65d514b3-7a61-427d-8ada-bdd48ead9e27">
+                        Yo Haseeb! Really want you to come , 10:38
+                    </option><option id="67896c35-f7c0-4c67-abb7-f154b06a36c1-meeting-option" accountid="undefined" agenda="_" localid="67896c35-f7c0-4c67-abb7-f154b06a36c1" starttime="2024-03-04T15:55:29.805Z" value="67896c35-f7c0-4c67-abb7-f154b06a36c1">
+                         , 09:55
+                    </option><option id="67f90931-e32a-43fb-86ca-57afcbb004c9-meeting-option" accountid="undefined" agenda="hase" localid="67f90931-e32a-43fb-86ca-57afcbb004c9" starttime="2024-02-23T22:00:44.641Z" value="67f90931-e32a-43fb-86ca-57afcbb004c9">
+                        hase, 16:00
+                    </option><option id="69cde9b3-1d8e-451b-ad89-eb24b618eabf-meeting-option" accountid="undefined" agenda="3.5" localid="69cde9b3-1d8e-451b-ad89-eb24b618eabf" starttime="2024-02-25T04:37:17.256Z" value="69cde9b3-1d8e-451b-ad89-eb24b618eabf">
+                        3.5, 22:37
+                    </option><option id="6b4a88b6-df3a-45c3-8551-d9310f743888-meeting-option" accountid="undefined" agenda="_2252" localid="6b4a88b6-df3a-45c3-8551-d9310f743888" starttime="2024-02-25T16:54:41.601Z" value="6b4a88b6-df3a-45c3-8551-d9310f743888">
+                        _2252, 10:54
+                    </option><option id="6cd22628-dce2-42b8-984c-c41b28ca5f67-meeting-option" accountid="undefined" agenda="3point" localid="6cd22628-dce2-42b8-984c-c41b28ca5f67" starttime="2024-04-10T15:17:44.670Z" value="6cd22628-dce2-42b8-984c-c41b28ca5f67">
+                        3point, 10:17
+                    </option><option id="71533073-cdf9-49a3-ba21-294f94db091c-meeting-option" accountid="undefined" agenda="wallet_" localid="71533073-cdf9-49a3-ba21-294f94db091c" starttime="2024-03-13T16:46:57.894Z" value="71533073-cdf9-49a3-ba21-294f94db091c">
+                        wallet , 11:46
+                    </option><option id="75cc3d95-1882-4a0e-b8f5-7091c0840584-meeting-option" accountid="null" agenda="INVOICES_-_Nut_Market" localid="75cc3d95-1882-4a0e-b8f5-7091c0840584" starttime="2024-02-22T17:30:55.448Z" value="75cc3d95-1882-4a0e-b8f5-7091c0840584">
+                        INVOICES - Nut Market, 11:30
+                    </option><option id="78400bd7-74fe-4acb-be39-c117879a931b-meeting-option" accountid="undefined" agenda="lab55@" localid="78400bd7-74fe-4acb-be39-c117879a931b" starttime="2024-04-15T13:51:28.747Z" value="78400bd7-74fe-4acb-be39-c117879a931b">
+                        lab55@, 08:51
+                    </option><option id="879498f2-536a-4132-8732-28fb88783270-meeting-option" accountid="undefined" agenda="3122865129" localid="879498f2-536a-4132-8732-28fb88783270" starttime="2024-04-08T15:57:27.198Z" value="879498f2-536a-4132-8732-28fb88783270">
+                        3122865129, 10:57
+                    </option><option id="895415ba-3aa6-40f6-ab76-b300f98c7683-meeting-option" accountid="undefined" agenda="prompt_" localid="895415ba-3aa6-40f6-ab76-b300f98c7683" starttime="2024-02-29T16:19:41.423Z" value="895415ba-3aa6-40f6-ab76-b300f98c7683">
+                        prompt , 10:19
+                    </option><option id="89ee5350-989f-4a4b-922d-5073bb702767-meeting-option" accountid="undefined" agenda="lock_Chain_101" localid="89ee5350-989f-4a4b-922d-5073bb702767" starttime="2024-03-10T17:24:05.934Z" value="89ee5350-989f-4a4b-922d-5073bb702767">
+                        lock Chain 101, 12:24
+                    </option><option id="8b5c51b3-5edb-462c-81f5-8c78851ce2b8-meeting-option" accountid="undefined" agenda="Sync" localid="8b5c51b3-5edb-462c-81f5-8c78851ce2b8" starttime="2024-04-22T14:59:17.328Z" value="8b5c51b3-5edb-462c-81f5-8c78851ce2b8">
+                        Sync, 09:59
+                    </option><option id="8c6a1f8e-f040-447e-b7c3-db95885d8213-meeting-option" accountid="undefined" agenda="e" localid="8c6a1f8e-f040-447e-b7c3-db95885d8213" starttime="2024-04-15T19:20:05.654Z" value="8c6a1f8e-f040-447e-b7c3-db95885d8213">
+                        e, 14:20
+                    </option><option id="924c3200-472d-45e6-91a5-f4ae3625a198-meeting-option" accountid="undefined" agenda="ha" localid="924c3200-472d-45e6-91a5-f4ae3625a198" starttime="2024-04-14T15:25:28.325Z" value="924c3200-472d-45e6-91a5-f4ae3625a198">
+                        ha, 10:25
+                    </option><option id="94796ca9-0aa2-4968-bdca-d747d217f25c-meeting-option" accountid="undefined" agenda="PRE" localid="94796ca9-0aa2-4968-bdca-d747d217f25c" starttime="2024-03-04T20:37:58.957Z" value="94796ca9-0aa2-4968-bdca-d747d217f25c">
+                        PRE, 14:37
+                    </option><option id="9694af82-c812-4d62-ac5c-f587dfdf7b9a-meeting-option" accountid="undefined" agenda="Untitled" localid="9694af82-c812-4d62-ac5c-f587dfdf7b9a" starttime="2024-03-04T17:16:24.778Z" value="9694af82-c812-4d62-ac5c-f587dfdf7b9a">
+                        Untitled, 11:16
+                    </option><option id="99049d00-1f27-4ebf-857c-cb81b5dc1298-meeting-option" accountid="undefined" agenda="ut_market" localid="99049d00-1f27-4ebf-857c-cb81b5dc1298" starttime="2024-04-15T19:40:27.673Z" value="99049d00-1f27-4ebf-857c-cb81b5dc1298">
+                        ut market, 14:40
+                    </option><option id="9ad1f377-3e8d-4060-940b-f9bd6727f8b5-meeting-option" accountid="undefined" agenda="Untitled" localid="9ad1f377-3e8d-4060-940b-f9bd6727f8b5" starttime="2024-03-08T00:33:37.879Z" value="9ad1f377-3e8d-4060-940b-f9bd6727f8b5">
+                        Untitled, 18:33
+                    </option><option id="9e795704-92bc-446e-9e25-07fa1a10929a-meeting-option" accountid="undefined" agenda="ies_champ" localid="9e795704-92bc-446e-9e25-07fa1a10929a" starttime="2024-02-26T15:22:04.726Z" value="9e795704-92bc-446e-9e25-07fa1a10929a">
+                        ies champ, 09:22
+                    </option><option id="9efbecfb-678e-4255-98e9-fc27b336941f-meeting-option" accountid="undefined" agenda="moon_launch" localid="9efbecfb-678e-4255-98e9-fc27b336941f" starttime="2024-02-22T21:35:55.058Z" value="9efbecfb-678e-4255-98e9-fc27b336941f">
+                        moon launch, 15:35
+                    </option><option id="a434c848-7816-4135-ac5b-a4a4abbfb896-meeting-option" accountid="undefined" agenda="bank" localid="a434c848-7816-4135-ac5b-a4a4abbfb896" starttime="2024-05-11T19:12:57.658Z" value="a434c848-7816-4135-ac5b-a4a4abbfb896">
+                        bank, 14:12
+                    </option><option id="a785c321-a14a-408d-9a62-987e625d2db7-meeting-option" accountid="undefined" agenda="gu" localid="a785c321-a14a-408d-9a62-987e625d2db7" starttime="2024-03-05T22:34:20.248Z" value="a785c321-a14a-408d-9a62-987e625d2db7">
+                        gu, 16:34
+                    </option><option id="ab9c38d7-6ddd-48f4-a42c-f242578774e6-meeting-option" accountid="undefined" agenda="TALK_THEN!" localid="ab9c38d7-6ddd-48f4-a42c-f242578774e6" starttime="2024-04-15T15:40:16.035Z" value="ab9c38d7-6ddd-48f4-a42c-f242578774e6">
+                        TALK THEN!, 10:40
+                    </option><option id="ac8a9b5a-c117-4858-9f14-89e346fb3c18-meeting-option" accountid="undefined" agenda="cord_" localid="ac8a9b5a-c117-4858-9f14-89e346fb3c18" starttime="2024-05-03T00:02:34.915Z" value="ac8a9b5a-c117-4858-9f14-89e346fb3c18">
+                        cord , 19:02
+                    </option><option id="aedce48f-fd94-4e09-a08c-504f1b7f1d85-meeting-option" accountid="undefined" agenda="nd_palette" localid="aedce48f-fd94-4e09-a08c-504f1b7f1d85" starttime="2024-04-14T14:42:58.977Z" value="aedce48f-fd94-4e09-a08c-504f1b7f1d85">
+                        nd palette, 09:42
+                    </option><option id="b2053111-1abf-487c-95db-6fbe662817fb-meeting-option" accountid="undefined" agenda="brenillab@1978" localid="b2053111-1abf-487c-95db-6fbe662817fb" starttime="2024-05-11T19:05:26.493Z" value="b2053111-1abf-487c-95db-6fbe662817fb">
+                        brenillab@1978, 14:05
+                    </option><option id="b5730669-afb0-4e41-9083-d88996e55853-meeting-option" accountid="undefined" agenda="_" localid="b5730669-afb0-4e41-9083-d88996e55853" starttime="2024-03-13T21:51:56.226Z" value="b5730669-afb0-4e41-9083-d88996e55853">
+                         , 16:51
+                    </option><option id="b5fe0f63-7fbf-4a9a-bbee-7e5888bb9210-meeting-option" accountid="undefined" agenda="1.99" localid="b5fe0f63-7fbf-4a9a-bbee-7e5888bb9210" starttime="2024-02-25T04:35:13.941Z" value="b5fe0f63-7fbf-4a9a-bbee-7e5888bb9210">
+                        1.99, 22:35
+                    </option><option id="b6c18a8a-b3a4-473d-a1ac-459b3ec71035-meeting-option" accountid="undefined" agenda="m_a_" localid="b6c18a8a-b3a4-473d-a1ac-459b3ec71035" starttime="2024-03-09T20:56:42.038Z" value="b6c18a8a-b3a4-473d-a1ac-459b3ec71035">
+                        m a , 14:56
+                    </option><option id="b72d1571-75ed-4d2a-bc83-f4afec30344d-meeting-option" accountid="undefined" agenda="ry_cool!" localid="b72d1571-75ed-4d2a-bc83-f4afec30344d" starttime="2024-04-07T14:51:21.128Z" value="b72d1571-75ed-4d2a-bc83-f4afec30344d">
+                        ry cool!, 09:51
+                    </option><option id="bd20438d-aab3-44f0-a8b3-4114a4e80aed-meeting-option" accountid="undefined" agenda="ss_bar_gsap" localid="bd20438d-aab3-44f0-a8b3-4114a4e80aed" starttime="2024-02-27T04:18:03.559Z" value="bd20438d-aab3-44f0-a8b3-4114a4e80aed">
+                        ss bar gsap, 22:18
+                    </option><option id="bf1b7f1b-1832-464a-acdc-65bceec91ee5-meeting-option" accountid="undefined" agenda="Ebrenillab60@" localid="bf1b7f1b-1832-464a-acdc-65bceec91ee5" starttime="2024-04-30T19:23:14.398Z" value="bf1b7f1b-1832-464a-acdc-65bceec91ee5">
+                        Ebrenillab60@, 14:23
+                    </option><option id="c040fdc3-17c3-4991-b7a3-cc8cc2fb51df-meeting-option" accountid="undefined" agenda="Untitled" localid="c040fdc3-17c3-4991-b7a3-cc8cc2fb51df" starttime="2024-04-14T14:43:52.277Z" value="c040fdc3-17c3-4991-b7a3-cc8cc2fb51df">
+                        Untitled, 09:43
+                    </option><option id="c3328be0-3e41-444f-b8fe-c313ec95b540-meeting-option" accountid="undefined" agenda="ditTrax" localid="c3328be0-3e41-444f-b8fe-c313ec95b540" starttime="2024-04-14T15:31:42.889Z" value="c3328be0-3e41-444f-b8fe-c313ec95b540">
+                        ditTrax, 10:31
+                    </option><option id="c418b88d-f395-451f-aca1-3064a2a9934b-meeting-option" accountid="undefined" agenda="_" localid="c418b88d-f395-451f-aca1-3064a2a9934b" starttime="2024-04-30T20:50:42.143Z" value="c418b88d-f395-451f-aca1-3064a2a9934b">
+                         , 15:50
+                    </option><option id="cd224c62-c669-436d-8e4a-8a0f73bf9738-meeting-option" accountid="undefined" agenda="o" localid="cd224c62-c669-436d-8e4a-8a0f73bf9738" starttime="2024-02-23T21:24:16.853Z" value="cd224c62-c669-436d-8e4a-8a0f73bf9738">
+                        o, 15:24
+                    </option><option id="cfd840fa-827d-45ec-9ff3-6646b4faf92a-meeting-option" accountid="undefined" agenda="p" localid="cfd840fa-827d-45ec-9ff3-6646b4faf92a" starttime="2024-02-27T14:34:22.644Z" value="cfd840fa-827d-45ec-9ff3-6646b4faf92a">
+                        p, 08:34
+                    </option><option id="d2274311-2676-46ce-971d-b7c4b7ef2923-meeting-option" accountid="undefined" agenda="Codeandpalettesocials@1978" localid="d2274311-2676-46ce-971d-b7c4b7ef2923" starttime="2024-05-11T18:51:47.494Z" value="d2274311-2676-46ce-971d-b7c4b7ef2923">
+                        Codeandpalettesocials@1978, 13:51
+                    </option><option id="d8315474-96d3-4993-a7e4-97320de7b31c-meeting-option" accountid="undefined" agenda="Matt_Sync_NM" localid="d8315474-96d3-4993-a7e4-97320de7b31c" starttime="2024-03-08T19:03:36.703Z" value="d8315474-96d3-4993-a7e4-97320de7b31c">
+                        Matt Sync NM, 13:03
+                    </option><option id="e16421b6-1c34-4149-9408-f42cf0026f0f-meeting-option" accountid="undefined" agenda="tell_me_about_the_SEI_blockchain_in_3_paragraphs" localid="e16421b6-1c34-4149-9408-f42cf0026f0f" starttime="2024-03-05T02:51:11.879Z" value="e16421b6-1c34-4149-9408-f42cf0026f0f">
+                        tell me about the SEI blockchain in 3 paragraphs, 20:51
+                    </option><option id="f0736ab6-6c19-42dd-abe0-09636a26d88d-meeting-option" accountid="undefined" agenda="codeandpalette" localid="f0736ab6-6c19-42dd-abe0-09636a26d88d" starttime="2024-04-10T17:17:38.068Z" value="f0736ab6-6c19-42dd-abe0-09636a26d88d">
+                        codeandpalette, 12:17
+                    </option><option id="f475e006-9ff6-44c0-9c87-e4e737922b4c-meeting-option" accountid="undefined" agenda=":_vault_orphan_system_seat_satisfy_orphan_luggage_body_novel_rotate_turn_already" localid="f475e006-9ff6-44c0-9c87-e4e737922b4c" starttime="2024-03-14T16:18:32.822Z" value="f475e006-9ff6-44c0-9c87-e4e737922b4c">
+                        : vault orphan system seat satisfy orphan luggage body novel rotate turn already, 11:18
+                    </option><option id="f5975670-0d3a-4d50-ac76-9d2aba0708d0-meeting-option" accountid="undefined" agenda="metest" localid="f5975670-0d3a-4d50-ac76-9d2aba0708d0" starttime="2024-04-15T17:24:05.547Z" value="f5975670-0d3a-4d50-ac76-9d2aba0708d0">
+                        metest, 12:24
+                    </option><option id="fbf3c847-af02-4f14-8eb1-08f2ea6104e3-meeting-option" accountid="undefined" agenda="godaddy." localid="fbf3c847-af02-4f14-8eb1-08f2ea6104e3" starttime="2024-02-27T15:35:30.706Z" value="fbf3c847-af02-4f14-8eb1-08f2ea6104e3">
+                        godaddy., 09:35
+                    </option></select>
+      </div>
+    </div>
+  </div>
+
+  <!-- Div to show settings items list -->
+  <div class="box" id="settings_box" style="z-index: 1; top: 598px; display: none;">
+    <div class="settings_box section">
+      <div class="fullScreenTitle display-flex flex-row justify-between align-center w-100 mb-2" style="height: 24px">
+        <h1 class="ml-2" style="
+            user-select: none;
+            font-weight: 700;
+            font-size: 18px;
+            font-family: &quot;GELLIX-REGULAR&quot;, sans-serif;
+          ">
+          <!-- settings -->
+        </h1>
+        <span class="material-symbols-rounded cursor-pointer" style="margin-top:3px; margin-right:12px !important; color:var(--primary)" id="close_settings">
+          <!-- home -->
+          close
+        </span>
+
+        <!-- <img
+          src="../assets/home_black.svg"
+          id="close_settings"
+          style="
+            height: 18px !important;
+            width: 18px !important;
+            margin-right: 2px;
+            cursor: pointer;
+            user-select: none;
+          "
+        /> -->
+      </div>
+      <div id="section_vert_settings" style="display: none;"><div style="display: none">
+  <link rel="stylesheet" href="chrome-extension://jkabohooekelnngbdkhpmpobbfljleoh/src/css/settings.css">
+</div>
+
+<div class="setttings-white-paper-container">
+  <div class="display-flex flex-col justify-center align-center w-100">
+    <!-- Link new account -->
+    <!-- <div class="settings-button" id="go_to_login">
+      <a class="settings-button-text">Link new account</a>
+    </div> -->
+
+    <!-- link accounts -->
+    
+
+    <!-- Remove accounts -->
+    <div class="noHover collapsible settings-collapsible" id="create_connection_collapsible" style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px); opacity: 0;">
+      <input id="collapsible1" type="checkbox" name="collapsible" style="display: none" checked="">
+      <label class="settings-button-text w-100" for="collapsible1">Create Connection</label>
+      <div class="collapsible-body">
+        <div class="noHover display-flex flex-col flex-1 align-center justify-center p-2">
+          <button id="google-calendar-btn" class="settings-btn-block mt-3" s="">
+            <div class="display-flex justify-center align-center w-20">
+              <img src="chrome-extension://jkabohooekelnngbdkhpmpobbfljleoh/src/icons/google.png" alt="Google Calendar" class="btn-icon">
+            </div>
+            <div class="display-flex justify-center align-center w-60">
+              <span class="ml-2">Sign in with Google</span>
+            </div>
+            <div class="display-flex justify-center align-center w-20"></div>
+          </button>
+
+          <button id="microsoft-calendar-btn" class="settings-btn-block mt-3">
+            <div class="display-flex justify-center align-center w-20">
+              <img src="chrome-extension://jkabohooekelnngbdkhpmpobbfljleoh/src/icons/microsoft.png" alt="Microsoft Calendar" class="btn-icon">
+            </div>
+            <div class="display-flex justify-center align-center w-60">
+              <span class="ml-2">Sign in with Outlook</span>
+            </div>
+            <div class="display-flex justify-center align-center w-20"></div>
+          </button>
+
+          <button id="calendly-calendar-btn" class="settings-btn-block mt-3">
+            <div class="display-flex justify-center align-center w-20">
+              <img src="chrome-extension://jkabohooekelnngbdkhpmpobbfljleoh/src/icons/calendly.png" alt="Calendly Calendar" class="btn-icon">
+            </div>
+            <div class="display-flex justify-center align-center w-60">
+              <span class="ml-2">Sign in with Calendly</span>
+            </div>
+            <div class="display-flex justify-center align-center w-20"></div>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Backup notes -->
+    <div class="noHover collapsible settings-collapsible" style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px); opacity: 0;">
+      <input id="collapsible2" type="checkbox" name="collapsible" style="display: none" checked="">
+      <label class="settings-button-text w-100 font-weight-bold" for="collapsible2">Remove Connection</label>
+      <div class="collapsible-body">
+        <div id="account-list-container" class="display-flex flex-col flex-1 align-center justify-center p-2">
+        <div class="settings-btn-block mt-3" provider="google" email="bryanballi@gmail.com">
+          <div class="display-flex justify-center align-center w-20">
+            <img src="chrome-extension://jkabohooekelnngbdkhpmpobbfljleoh/src/icons/google.png" alt="google" height="20" width="20" class="btn-icon">
+          </div>
+          <div class="display-flex justify-center align-center w-60">
+            <span class="linked-account-email ml-2">bryanballi@gmail.com</span>
+          </div>
+          <div class="display-flex justify-center align-center w-20">
+            <img class="ml-2 close-button cursor-pointer" accountid="115464844622001852268" src="chrome-extension://jkabohooekelnngbdkhpmpobbfljleoh/src/assets/close.png" alt="settings" height="15" width="15"> 
+          </div>
+        </div></div>
+      </div>
+    </div><div class="settings-button" id="import_notes">
+      <input id="import_notes_input" type="file" accept="application/json" name="collapsible" style="display: none">
+      <div class="display-flex flex-row align-center justify-center w-100">
+        <img src="chrome-extension://jkabohooekelnngbdkhpmpobbfljleoh/src/assets/import.png" class="mr-2" style="height: 15px !important; width: 12px !important">
+        <a class="settings-button-text">Import Notes</a>
+      </div>
+    </div>
+
+    <!-- Export JSON -->
+    <!-- <div class="settings-button" id="export_notes">
+      <div class="display-flex flex-row align-center justify-center w-100">
+        <img
+          src="../assets/export.png"
+          class="mr-2"
+          style="height: 15px !important; width: 12px !important"
+        />
+        <a class="settings-button-text">Export Notes</a>
+      </div>
+    </div> -->
+
+    <!-- Sign out -->
+    <!-- <div class="settings-button" id="signout">
+      <a
+        class="display-flex flex-row justify-center align-center w-100 settings-button-text"
+        >Sign Out
+      </a>
+    </div> -->
+
+    
+  <div class="noHover collapsible settings-collapsible" style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px); opacity: 0;">
+      <input id="collapsible3" type="checkbox" name="collapsible" style="display: none" checked="">
+
+      <!-- <div class="display-flex flex-row align-center justify-center w-100"> -->
+      <label class="settings-button-text w-100 flex-row justify-center align-center" for="collapsible3" style="display: flex">
+        <img src="chrome-extension://jkabohooekelnngbdkhpmpobbfljleoh/src/assets/delete.png" class="" style="height: 12px !important; width: 22px !important">
+        <p class="delete" style="
+            color: #6a6c83;
+            user-select: none;
+            /* width: 77%; */
+            border: 0px;
+            font-size: 12px;
+            color: #6a6c83;
+            background-color: transparent;
+            outline: none;
+            font-weight: lighter;
+            font-family: &quot;GELLIX-REGULAR&quot;, sans-serif;
+          ">
+          Delete Profile
+        </p>
+      </label>
+      <!-- </div> -->
+      <div class="collapsible-body">
+        <p style="text-align: center; margin-top: 3px; font-family: &quot;GELLIX-REGULAR&quot;, sans-serif;">
+          Export your notes before deleting your profile
+        </p>
+
+        <div class="p-2">
+          <div class="settings-button mt-4" id="export_notes" style="border: 2px solid #ededed">
+            <div class="display-flex flex-row align-center justify-center w-100">
+              <img src="chrome-extension://jkabohooekelnngbdkhpmpobbfljleoh/src/assets/export.png" class="mr-2" style="height: 15px !important; width: 12px !important">
+              <a class="settings-button-text">Export Notes</a>
+            </div>
+          </div>
+
+          <div class="settings-button" id="signout" style="background-color: #fae0e0">
+            <div class="display-flex flex-row align-center justify-center w-100">
+              <a class="settings-button-text">Delete Profile</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div></div>
+</div>
+</div>
+    </div>
+  </div>
+</div>
+
+<div id="footer_container" class="footer_container mr-0 ml-1" style="gap:10px">
+
+  
+  <!-- <div class="display-flex flex-col justify-start align-start ml-0">
+    <div class="toggle_text" id="hide_extension">
+    <span class="material-symbols-outlined">
+      do_not_disturb_on
+      </span>
+    </div>
+  </div> -->
+
+
+
+
+  <div id="footer_content" class="w-30 display-flex flex-row justify-end align-center flex col" style="gap: 1px; overflow: visible; margin-right: 14px; justify-content: center; display: flex;">
+
+  <div class="display-flex flex-row justify-center align-center">
+    <p class="toggle_text mr-2" id="refresh-data-feedback" style="display: block;">FEEDBACK</p>
+  </div>
+
+  <!-- <div class="display-flex flex-row justify-center align-center" id="hide_extension">
+    <p class="toggle_text mr-2" id="report-problem">HIDE</p>
+  </div> -->
+
+
+    <div id="hide_extension" style="display: flex;">
+      <p class="toggle_text_secondary" style="border-bottom: 0px solid;">HIDE</p>
+      <span class="material-symbols-outlined" id="report-problem"> do_not_disturb_on </span>
+    </div>
+
+    <div id="sync_text" style="visibility: visible;">
+  <p class="toggle_text" style="border-bottom: 0px solid;">SYNC</p>
+      <span class="material-symbols-outlined" style="color:white !important" id="refresh-data"> refresh </span>
+    </div>
+    
+  </div>
+</div>
+
+<script type="text/javascript" src="chrome-extension://jkabohooekelnngbdkhpmpobbfljleoh/src/js/utils.js"></script>
+<script type="text/javascript" src="chrome-extension://jkabohooekelnngbdkhpmpobbfljleoh/src/js/momentjs.js"></script>
+<script type="text/javascript" src="chrome-extension://jkabohooekelnngbdkhpmpobbfljleoh/src/js/rte.js"></script>
+<script type="text/javascript" src="chrome-extension://jkabohooekelnngbdkhpmpobbfljleoh/src/js/notes.js"></script>
+<script type="text/javascript" src="chrome-extension://jkabohooekelnngbdkhpmpobbfljleoh/src/scripts/gsap.min.js"></script>
+<script id="tooltip-js" type="text/javascript" src="chrome-extension://jkabohooekelnngbdkhpmpobbfljleoh/src/js/tooltip.js"></script><script id="calendar-js" type="text/javascript" src="chrome-extension://jkabohooekelnngbdkhpmpobbfljleoh/src/js/calendar.js"></script><script id="create-event-js" type="text/javascript" src="chrome-extension://jkabohooekelnngbdkhpmpobbfljleoh/src/js/create-event.js"></script><script id="settings-js" type="text/javascript" src="chrome-extension://jkabohooekelnngbdkhpmpobbfljleoh/src/js/settings.js"></script><script id="login-js" type="text/javascript" src="chrome-extension://jkabohooekelnngbdkhpmpobbfljleoh/src/js/login.js"></script><script id="audio-js" type="text/javascript" src="chrome-extension://jkabohooekelnngbdkhpmpobbfljleoh/src/js/audio.js"></script></body></html>

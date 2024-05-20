@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Classify Items</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f2f2f2;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+        .form-group {
+            margin-bottom: 10px;
+        }
+        .btn {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            color: #fff;
+        }
+        .btn-secondary {
+            background-color: #6c757d;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <h1>Classify Items</h1>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        <table>
+            <tr>
+                <th>Date</th>
+                <th>Description</th>
+                <th>Category</th>
+                <th>Income</th>
+                <th>Expense</th>
+                <th>Payment Method</th>
+                <th>Notes</th>
+                <th>Target Sheet</th>
+            </tr>
+            {% for item in form.items %}
+            <tr>
+                <td>{{ item.date }}</td>
+                <td>{{ item.description }}</td>
+                <td>{{ item.category }}</td>
+                <td>{{ item.income }}</td>
+                <td>{{ item.expense }}</td>
+                <td>{{ item.payment_method }}</td>
+                <td>{{ item.notes }}</td>
+                <td>{{ item.target_sheet }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        <div class="form-group">
+            {{ form.submit(class="btn btn-primary") }}
+            {{ form.cancel(class="btn btn-secondary") }}
+        </div>
+    </form>
+</body>
+</html>

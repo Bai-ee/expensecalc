@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Summary</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f2f2f2;
+        }
+        h1 {
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+        .summary {
+            margin-bottom: 20px;
+            padding: 10px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <h1>Monthly Summary</h1>
+
+    <div class="summary">
+        <h2>Code & Palette (LLC)</h2>
+        <p>Total Income: ${{ total_llc_income }}</p>
+        <p>Total Expenses: ${{ total_llc_expenses }}</p>
+        <h3>Details</h3>
+        <table>
+            <tr>
+                <th>Date</th>
+                <th>Description</th>
+                <th>Category</th>
+                <th>Income</th>
+                <th>Expense</th>
+                <th>Payment Method</th>
+                <th>Notes</th>
+            </tr>
+            {% for index, row in llc_data.iterrows() %}
+            <tr>
+                <td>{{ row['Date'] }}</td>
+                <td>{{ row['Description'] }}</td>
+                <td>{{ row['Category'] }}</td>
+                <td>{{ row['Income'] }}</td>
+                <td>{{ row['Expense'] }}</td>
+                <td>{{ row['Payment Method'] }}</td>
+                <td>{{ row['Notes'] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    <div class="summary">
+        <h2>Personal (Bryan)</h2>
+        <p>Total Income: ${{ total_personal_income }}</p>
+        <p>Total Expenses: ${{ total_personal_expenses }}</p>
+        <h3>Details</h3>
+        <table>
+            <tr>
+                <th>Date</th>
+                <th>Description</th>
+                <th>Category</th>
+                <th>Income</th>
+                <th>Expense</th>
+                <th>Payment Method</th>
+                <th>Notes</th>
+            </tr>
+            {% for index, row in personal_data.iterrows() %}
+            <tr>
+                <td>{{ row['Date'] }}</td>
+                <td>{{ row['Description'] }}</td>
+                <td>{{ row['Category'] }}</td>
+                <td>{{ row['Income'] }}</td>
+                <td>{{ row['Expense'] }}</td>
+                <td>{{ row['Payment Method'] }}</td>
+                <td>{{ row['Notes'] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+</html>
