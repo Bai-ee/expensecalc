@@ -40,9 +40,25 @@
     <h1>Monthly Summary</h1>
 
     <div class="summary">
-        <h2>Code & Palette (LLC)</h2>
-        <p>Total Income: ${{ total_llc_income }}</p>
-        <p>Total Expenses: ${{ total_llc_expenses }}</p>
+        <h2>{{ selected_sheet }} Summary</h2>
+        <p>Total Income: ${{ total_income }}</p>
+        <p>Total Expenses: ${{ total_expenses }}</p>
+        <p>Number of Line Items: {{ line_item_count }}</p>
+
+        <h2>Insights</h2>
+        <table>
+            <tr>
+                <th>Category</th>
+                <th>Total Expense</th>
+            </tr>
+            {% for category, total in category_totals_from_insights.items() %}
+            <tr>
+                <td>{{ category }}</td>
+                <td>{{ total }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+
         <h3>Details</h3>
         <table>
             <tr>
@@ -54,7 +70,7 @@
                 <th>Payment Method</th>
                 <th>Notes</th>
             </tr>
-            {% for index, row in llc_data.iterrows() %}
+            {% for index, row in data.iterrows() %}
             <tr>
                 <td>{{ row['Date'] }}</td>
                 <td>{{ row['Description'] }}</td>
@@ -66,32 +82,41 @@
             </tr>
             {% endfor %}
         </table>
-    </div>
 
-    <div class="summary">
-        <h2>Personal (Bryan)</h2>
-        <p>Total Income: ${{ total_personal_income }}</p>
-        <p>Total Expenses: ${{ total_personal_expenses }}</p>
-        <h3>Details</h3>
+        <h3>Insights</h3>
         <table>
             <tr>
-                <th>Date</th>
                 <th>Description</th>
+                <th>Entity Name</th>
+                <th>Entity Type</th>
+                <th>Salience</th>
+                <th>Total Expense</th>
                 <th>Category</th>
-                <th>Income</th>
-                <th>Expense</th>
-                <th>Payment Method</th>
-                <th>Notes</th>
+                <th>Entity Explanation</th>
             </tr>
-            {% for index, row in personal_data.iterrows() %}
+            {% for insight in insights %}
             <tr>
-                <td>{{ row['Date'] }}</td>
-                <td>{{ row['Description'] }}</td>
+                <td>{{ insight['description'] }}</td>
+                <td>{{ insight['name'] }}</td>
+                <td>{{ insight['type'] }}</td>
+                <td>{{ insight['salience'] }}</td>
+                <td>{{ insight['total_expense'] }}</td>
+                <td>{{ insight['category'] }}</td>
+                <td>{{ insight['entity_explanation'] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+
+        <h3>Category Totals</h3>
+        <table>
+            <tr>
+                <th>Category</th>
+                <th>Total Expense</th>
+            </tr>
+            {% for index, row in category_totals.iterrows() %}
+            <tr>
                 <td>{{ row['Category'] }}</td>
-                <td>{{ row['Income'] }}</td>
                 <td>{{ row['Expense'] }}</td>
-                <td>{{ row['Payment Method'] }}</td>
-                <td>{{ row['Notes'] }}</td>
             </tr>
             {% endfor %}
         </table>

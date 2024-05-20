@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "expenses-administration",
+  "private_key_id": "07026ddc784a80449c161e273dc2de05029df12a",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCzPFOrSfXsx1Xt\nGA2Wp12QrirnNXU+7KBnXiscCyzVk1AM+JMrl4Z8aFARLL3tIEjOCGMKv2buPAp3\n2VGDdgVQ4movcqZRUOoBc/i/pvruQ0zbZFXGYRSsfJraWQEEhOt/lbjwKa4m1+tJ\nTZ4SrVxHyWloPMda1y8E+argVTJAqphb+SKA6T6gA8+S5A2eOL+pWUX53VGGWtTj\nfrWCpuzk09YWnETgjXA5UuXdyYzOXaSM3TexA0PRTmTsmQU7wLGasHoiDN7FH9yR\nI5SiK3T9/TLinbvh4mzEAygpvMEmLnlQj3cKl8eG5nrEvXS1HXLIiUKCzHPXEH6T\nB1QOswS5AgMBAAECggEABd2/I3ZBcZPsGr08lkjTxyxAzKNbUHle6Mcu8W/nB6Ch\ndaKN8YwtQLA1fPxqL8MXMuwYxBV+iqSl1zqXqwNvZNsbjIJBJzHsY2qz57Tma1WB\n+VUWjsO8ZnFSbFFOVy3RBd0vqdJEEt14A/oMUYeW7hANjmsdKhAB0qo9EXLPDl6g\n4BPv6tVokH6G0Y01w3u5qhx1dm17xbF9+W9eNT4rvICS7ucB/bBBpivXVAZCVQti\nuniw9AKMRf2MziILDFpwLeDvOBwSQ5/wjfSm+K5CvGYDROt6yHDQnuo+CILN2v4L\nL9kknQHxtiVfafSj7v2GX6XpnreVvbnX3DTyNzVJEQKBgQDyRCiF0sQ7MPfmpNbD\nKL6CtUvBuAzS+//fZ3X/HotDwPR207Uhfhn1NR9D8lJ2Ycs4jMxwj9v32cXtIAMK\nR1nnuL3f69Oxt4Cp0QjUbiz9ro5H6P1Aj1IA5XR4blmAWUfJosQqCj6L7NLLFaHk\n7HmT66Yoox2CJ2J0eMWzPmrIEQKBgQC9ZXMIVMXCfAAAklkjxDwS+MMocOd//IGt\nhTkOjquwOISPSZfwBqB0dz2xV4VY2w3EWdiQL00gaOBrEQvG0jq3AeemfBFgxJNR\nBJ3JFvglP5Ru7dxzWwGjFfyb0fG+IcF+DqgfQe8sqZZXlGgaVUTPVOsvUkJqXcfw\nIMtB7BNaKQKBgGaLawuZ9u2HAKdjxnO830a8LmDE4si7WcbaKBvgddor5k4VtmmC\n0sHzxlQgUb9CDZ7WGgLbIaR7TUfdcOv835UxoU0SqPxkS9WVYUNpjymhpR/TAr88\n6tzuQqpnKwMkxzoV5ypUQ70+dMr5URlw7tUpvZ8dy/O3b/kU1bnVBaXBAoGATcSA\nTWVxpoAACDwPeg4zlJ6sk8h4ZicqoDNZ0E5o1P0AAU34o0g1Tl0/6bfEO04HAx7Z\nO6sQgkROEeh363WbQlX35nZ/NDrDOrsohs91qOXIbxwgLwWpUGvQw7KbDrURnE8s\nXVlXegFQiDmZ3WYx0OhPgajHOKG1XTY5/6GN+LECgYEAwx1EjNvTdwhN+yX1ur7K\nKpWG8kpUdwgtf310Wl+82i26dUNpA14ji6IcRoq/8nFS0ujDZVw4QR90QhXy6LAP\ntv+fVmB4x3ReAoutLGCOGEcgZkwE6EDrwkoJzxoEVeObGazUEXi/z07gqVY8Wuow\nH86o73qy22dUOtAkf8E2898=\n-----END PRIVATE KEY-----\n",
+  "client_email": "ai-calc@expenses-administration.iam.gserviceaccount.com",
+  "client_id": "117192958610609228169",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/ai-calc%40expenses-administration.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
